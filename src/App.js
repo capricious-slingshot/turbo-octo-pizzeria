@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import './App.scss'
-//verify in node-modules, then import
+import 'bootstrap-social/bootstrap-social.css'
+import 'font-awesome/css/font-awesome.min.css'
+// import './styles/application.scss' --failure steps: yarn add node - sass; rename src / App.css to src / App.scss and update src / App.js to import src/App.scss
+
 //lookup google font assets and possibly download
 //probbably wont need bootstrap.js, but check
 import Header from './componets/Header'

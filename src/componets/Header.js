@@ -1,18 +1,14 @@
-import {Component} from 'react'
+import Logo from './Logo'
+import BusinessInfo from './BusinessInfo'
 // import { x,y,z  } from 'react-bootstrap';
 
-class Header extends Component{
-  constructor(props) {
-    super(props)
-    console.log(props)
-    this.restaurant = props.restaurant
-  }
-
-  render() {
-    return (
-      <div>{this.restaurant} Header</div>
-    )
-  }
+export default function Header(){
+  return (
+    <div className="container">
+      <div className="row">
+        <Logo />
+        <BusinessInfo phone={"206-269-2222"} streetAddress={"401 Cedar St"}/>
+      </div>
+    </div>
+  )
 }
-
-export default Header

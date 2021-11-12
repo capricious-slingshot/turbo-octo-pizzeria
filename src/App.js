@@ -1,19 +1,18 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+// import './App.scss'
+//verify in node-modules, then import
+//lookup google font assets and possibly download
+//probbably wont need bootstrap.js, but check
 import Header from './componets/Header'
-import Menu from './componets/Menu'
+import Main from './componets/Main'
 import Footer from './componets/Footer'
 
-class App extends React.Component{
-  render() {
-    return (
-      <>
-        <Header restaurant={"Bambinos"} />
-        <Menu restaurant={"Bambinos"}/>
-        <Footer restaurant={"Bambinos"}/>
-      </>
-    )
-  }
+export default function App(){
+  return (
+    <>
+      <Header />
+      <Main />
+      <Footer phone={"206 - 269 - 2222"} streetAddress={"401 Cedar St"} city={"Seattle, WA 98121"} />
+    </>
+  )
 }
-
-export default App

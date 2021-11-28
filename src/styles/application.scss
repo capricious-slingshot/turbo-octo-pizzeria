@@ -1,0 +1,201 @@
+$color-background: #808080;
+$color-text: #fff;
+$color-secondary: #acacac;
+$logo-color: #0a0a0a;
+$card-default: rgb(70, 61, 52);
+$odd-table-row: rgb(180, 179, 179);
+
+$bg-img: url("../img/ovenFire.png");
+
+$overlay-10: rgba(5, 5, 5, 0.1);
+$overlay-35: rgba(5, 5, 5, 0.35);
+$overlay-50: rgba(5, 5, 5, 0.5);
+$overlay-75: rgba(5, 5, 5, 0.75);
+
+@font-face {
+  font-family: "Gruppo";
+  src: local("Gruppo"),
+    url(../fonts/Gruppo/Gruppo-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Raleway";
+  src: local("Raleway"),
+    url(../fonts/Raleway/Raleway-VariableFont_wght.ttf) format("truetype");
+}
+
+$body-font: "Raleway", sans-serif;
+$header-font: "Gruppo", sans-serif;
+
+body {
+  background-color: $color-background;
+  font-family: $body-font;
+  color: $color-text;
+  font-size: 16px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.pricing {
+  font-family: $header-font;
+}
+h1 {
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+a,
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+table {
+  th,
+  td {
+    color: $color-text;
+    font-size: 0.9rem;
+  }
+  .odd td {
+    color: $odd-table-row;
+  }
+  .table-striped {
+    margin-bottom: 0;
+  }
+}
+#headerInfo {
+  padding-top: 10px;
+}
+#logo {
+  margin-top: 20px;
+  border: 4px solid $color-text;
+  padding: 20px;
+  background: $logo-color;
+  min-width: 325px;
+  max-width: 325px;
+  text-align: center;
+}
+#accordion {
+  margin-top: 20px;
+  letter-spacing: 1.15px;
+}
+.box-padding {
+  padding: 20px;
+}
+.card-header {
+  padding: 0;
+  background: $color-secondary;
+  h4 {
+    padding: 10px 20px;
+  }
+  h6 {
+    font-size: 30px;
+  }
+}
+.card-body {
+  max-height: 600px;
+  padding: 0;
+}
+.overlay-10 {
+  background: $overlay-10;
+  padding: 0;
+}
+.overlay-35 {
+  background: $overlay-35;
+}
+.overlay-50 {
+  background: $overlay-50;
+}
+.overlay-75 {
+  background: $overlay-75;
+}
+.overflow {
+  overflow-y: scroll;
+}
+.section-title h5 {
+  font-size: 25px;
+  border-bottom: 1px solid $color-text;
+  margin-top: 20px;
+}
+.pricing {
+  font-size: 30px;
+}
+.sizing {
+  margin-left: 17px;
+  font-size: 25px;
+}
+#pizza-card {
+  background-attachment: fixed;
+  background: no-repeat $bg-img $card-default;
+}
+#calzoni-card {
+  background-attachment: fixed;
+  background: no-repeat url("../img/calzoni.png") $card-default;
+}
+#appetizers-card {
+  background: no-repeat url("../img/olives.png") $card-default;
+}
+#salad-card {
+  background: no-repeat url("../img/salad-2.png") $card-default;
+  background-size: cover;
+}
+#gelato-card {
+  background: no-repeat url("../img/gelato.png") $card-default;
+}
+#tap-card {
+  background-attachment: fixed;
+  background: no-repeat url("../img/beer.png") $card-default;
+  background-size: cover;
+}
+#vino-card {
+  background-attachment: fixed;
+  background: no-repeat url("../img/wine.png") rgb(70, 61, 52);
+  background-size: cover;
+}
+#na-bev-card {
+  background: no-repeat url("../img/naBev.png") rgb(70, 61, 52);
+  width: 100%;
+  background-position: 60% 40%;
+}
+
+footer {
+  margin-top: 40px;
+  .phoneContact {
+    text-decoration: none;
+    color: inherit;
+  }
+  .btn-social-icon {
+    border: 1px solid $color-text;
+    float: right;
+    margin-left: 10px;
+  }
+  #copyright {
+    clear: right;
+    text-align: right;
+    padding-top: 15px;
+    color: $color-text;
+  }
+  #googleMap {
+    margin: 40px auto 100px;
+  }
+}
+
+/*-------------------------------------*/
+@media screen and (min-width: 768px) {
+  #headerInfo {
+    padding-top: 30px;
+  }
+  #logo {
+    margin-left: 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  footer {
+    margin-top: 80px;
+    #googleMap {
+      margin-top: 0;
+    }
+  }
+}

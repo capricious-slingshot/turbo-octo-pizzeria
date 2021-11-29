@@ -1,15 +1,19 @@
-import Accordion from './Accordion'
+import { Component } from 'react'
 
-export default function Main() {
-  return (
-    <main>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <Accordion />
+class Main extends Component {
+  render() {
+    return (
+      <main>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              {this.props.view}
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-  )
-}
+      </main>
+    )
+  }
+ }
+
+ export default Main

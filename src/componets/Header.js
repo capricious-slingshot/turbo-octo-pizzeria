@@ -1,6 +1,5 @@
 import Logo from './Logo'
 import BusinessInfo from './BusinessInfo'
-// import { x,y,z  } from 'react-bootstrap';
 
 export default function Header(){
   return (

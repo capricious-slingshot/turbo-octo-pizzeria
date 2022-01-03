@@ -13,7 +13,7 @@ class Card extends Component{
     return (
       <div className="card">
         <div className="card-header">
-          <h4><a data-toggle="collapse" data-target={`#${this.dataTarget}`}>{ this.title }</a></h4>
+          <h4><button class="card-accordion-anchor" data-toggle="collapse" data-target={`#${this.dataTarget}`}>{ this.title }</button></h4>
           <div className="collapse show" id={ this.dataTarget }data-parent="#accordion">
             <div className="card-body col-12 overflow" id={`#${this.dataTarget}-card`}>
               <div className="cotainer overlay-35 box-padding">

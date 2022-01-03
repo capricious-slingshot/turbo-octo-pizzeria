@@ -37,7 +37,6 @@ class Accordion extends Component {
           dataTarget="na-bev"
           overlay="35"
           description=""/>
-    
       </div>
     )
   }

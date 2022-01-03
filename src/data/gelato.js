@@ -1,6 +1,7 @@
 export const gelatoData = [
   {
-    sectionDesc: "Price per Scoop",
+    title: "D'Ambrosio Gelato",
+    description: "Price per Scoop",
     section1: null,
     subheader1: null,
     section1Items: [

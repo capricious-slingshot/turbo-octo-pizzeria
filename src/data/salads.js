@@ -1,6 +1,7 @@
 export const saladsData = [
   {
-    sectionDesc: null,
+    title: "Salads",
+    description: null,
     section1: null,
     subheader1: null,
     section1Items: [

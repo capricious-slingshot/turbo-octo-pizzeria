@@ -1,5 +1,7 @@
 export const appetizerData = [
   {
+    title: "Appetizers",
+    description: "",
     sectionDesc: null,
     section1: null,
     subheader1: null,

@@ -1,6 +1,7 @@
 export const calzoniData = [
   {
-    sectionDesc: "All Calzoni is made with Tomato Sauce and Mozzerella. Subtractions OK, no substitutions",
+    title: "Calzoni",
+    description: "All Calzoni is made with Tomato Sauce and Mozzerella. Subtractions OK, no substitutions",
     section1: null,
     subheader1: null,
     section1Items: [

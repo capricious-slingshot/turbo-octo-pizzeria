@@ -2,8 +2,9 @@
 
 export const microwbrewData = [
   {
-    sectionDesc: "All drafts $7",
-    section1Items: [
+    title: "Microbrews",
+    description: "All drafts $7",
+    tableRowItems: [
       {
         tapNumber: "1",
         brewery: "Boneyard",

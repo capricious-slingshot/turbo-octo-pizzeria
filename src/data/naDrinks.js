@@ -1,6 +1,7 @@
 export const naDrinksData = [
   {
-    sectionDesc: null,
+    title: "Non Alcholic",
+    description: null,
     section1: null,
     subheader1: null,
     section1Items: [

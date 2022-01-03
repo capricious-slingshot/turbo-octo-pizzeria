@@ -1,6 +1,7 @@
 export const wineData = [
   {
-    sectionDesc: null,
+    title: "Wine",
+    description: null,
     section1 : "Red",
     subheader1: null,
     section1Items: [

@@ -5,6 +5,8 @@ class Card extends Component{
   constructor(props) {
     super(props)
     this.dataTarget = props.dataTarget
+    this.overlay = props.overlay
+    //dataTarget and overlay will always be props and not part of the data model, correct?
     this.title = props.title
     this.description = props.description
   }
@@ -16,7 +18,7 @@ class Card extends Component{
           <h4><button class="card-accordion-anchor" data-toggle="collapse" data-target={`#${this.dataTarget}`}>{ this.title }</button></h4>
           <div className="collapse show" id={ this.dataTarget }data-parent="#accordion">
             <div className="card-body col-12 overflow" id={`#${this.dataTarget}-card`}>
-              <div className="cotainer overlay-35 box-padding">
+              <div className={`cotainer overlay-${this.dataTarget} box-padding`}>
                 <p>{ this.description }</p>
                 <div className="row section-title">
                   <div className="col">

@@ -33,14 +33,9 @@ import Main from './componets/Main'
 import Header from './componets/Header'
 import Footer from './componets/Footer'
 import Accordion from './componets/Accordion'
-import Pizza from './componets/Pizza'
-import Microbrew from './componets/Microbrew'
-import Calzoni from './componets/Calzoni'
-import Appetizers from './componets/Appetizers'
-import Salads from './componets/Salads'
-import Wine from './componets/Wine'
-import Gelato from './componets/Calzoni'
-import NaDrinks from './componets/NaDrinks'
+import AccordianEdit from './componets/edit/AccordianEdit'
+import TableEdit from './componets/edit/TableEdit'
+
 
 function Menu() {
   return (
@@ -56,16 +51,15 @@ export default function App() {
   
   return (
     <Routes>
-      
       <Route exact path='/' element={<Menu />} />
-      <Route exact path='/pizza/edit' element={<Main view={<Pizza />} />} />
-      <Route exact path='/microbrews/edit' element={<Main view={<Microbrew />} />} />
-      <Route exact path='/calzoni/edit' element={<Main view={<Calzoni />} />} />
-      <Route exact path='/appetizers/edit' element={<Main view={<Appetizers />} />} />
-      <Route exact path='/salads/edit' element={<Main view={<Salads/>} />} />
-      <Route exact path='/wine/edit' element={<Main view={<Wine />} />} />
-      <Route exact path='/gelato/edit' element={<Main view={<Gelato />} />} />
-      <Route exact path='/naDrinks/edit' element={<Main view={<NaDrinks/>} />} />
+      <Route exact path='/pizza/edit' element={<Main view={<AccordianEdit />} />} />
+      <Route exact path='/microbrews/edit' element={<Main view={<TableEdit />} />} />
+      <Route exact path='/calzoni/edit' element={<Main view={<AccordianEdit />} />} />
+      <Route exact path='/appetizers/edit' element={<Main view={<AccordianEdit />} />} />
+      <Route exact path='/salads/edit' element={<Main view={<AccordianEdit/>} />} />
+      <Route exact path='/wine/edit' element={<Main view={<AccordianEdit />} />} />
+      <Route exact path='/gelato/edit' element={<Main view={<AccordianEdit />} />} />
+      <Route exact path='/naDrinks/edit' element={<Main view={<AccordianEdit/>} />} />
     </Routes>
   )
 }

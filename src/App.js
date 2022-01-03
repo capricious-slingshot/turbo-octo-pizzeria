@@ -26,14 +26,21 @@ import './styles/application.scss'
 import './fonts/Gruppo/Gruppo-Regular.ttf'
 import './fonts/Raleway/Raleway-VariableFont_wght.ttf'
 import 'bootstrap/dist/js/bootstrap.js'
-import Main from './componets/Main'
+
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Main from './componets/Main'
 import Header from './componets/Header'
 import Footer from './componets/Footer'
 import Accordion from './componets/Accordion'
-import MicrobrewEdit from './componets/MicrobrewEdit'
-import WineEdit from './componets/WineEdit'
-import React from 'react'
+import Pizza from './componets/Pizza'
+import Microbrew from './componets/Microbrew'
+import Calzoni from './componets/Calzoni'
+import Appetizers from './componets/Appetizers'
+import Salads from './componets/Salads'
+import Wine from './componets/Wine'
+import Gelato from './componets/Calzoni'
+import NaDrinks from './componets/NaDrinks'
 
 function Menu() {
   return (
@@ -49,9 +56,16 @@ export default function App() {
   
   return (
     <Routes>
-      <Route exact path='/' element={ <Menu />} />
-      <Route exact path='/microbrews/edit' element={<Main view={<MicrobrewEdit />} />} />
-      <Route exact path='/wine/edit' element={<Main view={<WineEdit />} />} />
+      
+      <Route exact path='/' element={<Menu />} />
+      <Route exact path='/pizza/edit' element={<Main view={<Pizza />} />} />
+      <Route exact path='/microbrews/edit' element={<Main view={<Microbrew />} />} />
+      <Route exact path='/calzoni/edit' element={<Main view={<Calzoni />} />} />
+      <Route exact path='/appetizers/edit' element={<Main view={<Appetizers />} />} />
+      <Route exact path='/salads/edit' element={<Main view={<Salads/>} />} />
+      <Route exact path='/wine/edit' element={<Main view={<Wine />} />} />
+      <Route exact path='/gelato/edit' element={<Main view={<Gelato />} />} />
+      <Route exact path='/naDrinks/edit' element={<Main view={<NaDrinks/>} />} />
     </Routes>
   )
 }

@@ -1,4 +1,6 @@
-//questions - file name singular or plural? what is the best file tree structure here?
+//questions:
+// 1: file name singular or plural ? what is the best file tree structure here ?
+// 2: should overlay and data target be included in each model? They are not to be edited.
 
 export const pizzaData = [
   {

@@ -1,6 +1,5 @@
 // TODOs:
 // baseline up and running: 
-// (x!!) 1 : figure out how to pullin js from bootstrap ? reactstrap ? react - bootstrap ? wtf ?
 // () 2: images file strucutre? background images not being loaded for accordian. I'm missunderstanding something dumb.
 // () clone this baseline for the three following itterations
 
@@ -16,7 +15,7 @@
 // 1: using hooks and functional programing instead of redux
 // 2: understanding basic crud at this level
 
-// whip up a blog post tgo articulate the differences
+// whip up a blog post to articulate the differences
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -56,10 +55,10 @@ export default function App() {
       <Route exact path='/microbrews/edit' element={<Main view={<TableEdit />} />} />
       <Route exact path='/calzoni/edit' element={<Main view={<AccordianEdit />} />} />
       <Route exact path='/appetizers/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/salads/edit' element={<Main view={<AccordianEdit/>} />} />
+      <Route exact path='/salads/edit' element={<Main view={<AccordianEdit />} />} />
       <Route exact path='/wine/edit' element={<Main view={<AccordianEdit />} />} />
       <Route exact path='/gelato/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/naDrinks/edit' element={<Main view={<AccordianEdit/>} />} />
+      <Route exact path='/naDrinks/edit' element={<Main view={<AccordianEdit />} />} />
     </Routes>
   )
 }

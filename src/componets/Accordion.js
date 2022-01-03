@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import Card from './Card'
+//question about dumbing down the card component - overlay and data-target should not be editable
 
 class Accordion extends Component {
   render() {

@@ -55,8 +55,8 @@ export const microwbrewData = [
       },
       {
         tapNumber: "7",
-        brewery: "Pike Kilt Lifter",
-        beerName: "Scotch Ale",
+        brewery: "Pike Place Brewing",
+        beerName: "Kilt Lifter Scotch Ale",
         abv: "7.5",
         state: "WA",
         ounces: "12"

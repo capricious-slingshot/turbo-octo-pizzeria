@@ -1,6 +1,8 @@
 export const gelatoData = [
   {
     title: "D'Ambrosio Gelato",
+    dataTarget: "gelato",
+    overlay: 35,
     description: "Price per Scoop",
     section1: null,
     subheader1: null,

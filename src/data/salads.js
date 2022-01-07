@@ -1,6 +1,8 @@
 export const saladsData = [
   {
     title: "Salads",
+    dataTarget: "salad",
+    overlay: 50,
     description: null,
     section1: null,
     subheader1: null,

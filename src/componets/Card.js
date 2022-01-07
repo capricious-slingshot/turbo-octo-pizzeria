@@ -6,7 +6,6 @@ class Card extends Component{
     super(props)
     this.dataTarget = props.dataTarget
     this.overlay = props.overlay
-    //dataTarget and overlay will always be props and not part of the data model, correct?
     this.title = props.title
     this.description = props.description
   }

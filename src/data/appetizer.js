@@ -1,6 +1,8 @@
 export const appetizerData = [
   {
     title: "Appetizers",
+    dataTarget: "appetizers",
+    overlay: 50,
     description: "",
     sectionDesc: null,
     section1: null,

@@ -1,6 +1,8 @@
 export const wineData = [
   {
     title: "Wine",
+    dataTarget: "vino",
+    overlay: 50,
     description: null,
     section1 : "Red",
     subheader1: null,

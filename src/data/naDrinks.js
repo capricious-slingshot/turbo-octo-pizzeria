@@ -1,6 +1,8 @@
 export const naDrinksData = [
   {
     title: "Non Alcholic",
+    dataTarget: "na-bev",
+    overlay: 35,
     description: null,
     section1: null,
     subheader1: null,

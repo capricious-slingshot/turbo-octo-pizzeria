@@ -1,6 +1,8 @@
 export const calzoniData = [
   {
     title: "Calzoni",
+    dataTarget: "calzoni",
+    overlay: 50,
     description: "All Calzoni is made with Tomato Sauce and Mozzerella. Subtractions OK, no substitutions",
     section1: null,
     subheader1: null,

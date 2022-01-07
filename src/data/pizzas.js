@@ -5,6 +5,8 @@
 export const pizzaData = [
   {
     title: "Brick Oven Pizza",
+    dataTarget: 'pizza',
+    overlay: 35,
     description: "Our handcrafted brick oven pizza is traditional 'dark crust' because it is baked directly on stone. If you prefer 'light crust' please specify. 10 inch is 4 slices and makes a great personal size, or a 16 inch is 8 slices, good for 2+ people.",
     section1 : "House Combinations",
     subheader1: '10" / 16"',

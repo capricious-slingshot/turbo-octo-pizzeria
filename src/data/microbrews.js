@@ -3,6 +3,8 @@
 export const microwbrewData = [
   {
     title: "Microbrews",
+    dataTarget: "taps",
+    overlay: 10,
     description: "All drafts $7",
     tableRowItems: [
       {

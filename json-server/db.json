@@ -241,8 +241,7 @@
       }
     ]
   },
-  "appetizers":
-  {
+  "appetizers": {
     "title": "Appetizers",
     "dataTarget": "appetizers",
     "overlay": 50,

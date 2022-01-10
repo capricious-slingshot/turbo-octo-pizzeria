@@ -1,21 +1,24 @@
 import { Component } from 'react'
 import Card from './Card'
-import data from '../data'
 
 class Accordion extends Component {
   render() {
+    let data = fetch('http://localhost:3001/pizzas')
+               .then(response => response.json())
+               .then(data => console.log(data));
+    
+    //I don't want to make 8 seperate calls to the server - very expensive
     //why can't I have a function outside of render but inside the class? scope?
     //why was JS written by hipster idiots? I hate this language.
 
 
     //data is a hash of hashes
     //grab each key, and pass it's value to Card
-    //why can't I chain this shit?
+    //why can't I chain this shit? 
     return (
       <div className="accordion accordion-flush" id="accordion">
-        
-        {/* {console.log(data.Appetizers)} */}
-        {Object.keys(data).forEach((key, index) => <Card data={data[key]} />)} 
+        {console.log(data)}
+        {/* {Object.keys(data).forEach((key, index) => <Card data={data[key]} />)}  */}
       </div>
     )
   }

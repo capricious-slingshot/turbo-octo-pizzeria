@@ -10,11 +10,12 @@ class Accordion extends Component {
 
     //data is a hash of hashes
     //grab each key, and pass it's value to Card
+    //why can't I chain this shit?
     return (
       <div className="accordion accordion-flush" id="accordion">
         
         {/* {console.log(data.Appetizers)} */}
-        {Object.keys(data).forEach((key, index) => <Card data={data[key]} />)}
+        {Object.keys(data).forEach((key, index) => <Card data={data[key]} />)} 
       </div>
     )
   }

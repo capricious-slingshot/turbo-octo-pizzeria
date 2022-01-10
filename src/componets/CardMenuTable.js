@@ -4,7 +4,7 @@ import TableRow from './TableRow'
 class CardMenuTable extends Component {
   render() {
     return (
-      <table class="table table-sm table-striped">
+      <table className="table table-sm table-striped">
         <thead>
           <tr>
             <th>Tap</th>

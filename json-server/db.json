@@ -500,7 +500,7 @@
       }
     ]
   },
-  "na-drinks": {
+  "nonalcholic": {
     "title": "Non Alcholic",
     "dataTarget": "na-bev",
     "overlay": 35,

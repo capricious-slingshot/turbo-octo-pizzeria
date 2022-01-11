@@ -5,10 +5,12 @@ import CardMenuTable from './CardMenuTable'
 class Card extends Component{
 
   render() {
+    console.log(this.props.data) //can see promise in browser 
+    console.log(this.props.datadescription) //undefined
+    //all calls to this.props.data.... below just return undefined
+
     let menuType = (this.props.data.dataTarget === 'taps') ? <CardMenuTable data={this.props.data} /> : <CardMenuMain data={this.props.data} />
     let showSection = (this.props.data.dataTarget === 'pizza') ? "show" : ""
-    console.log(this.props.data) //can see promise in browser console
-    //all calls to this.props.data.... below just return undefined
     return (
       <div className="card">
         <div className="card-header">

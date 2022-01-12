@@ -1,0 +1,10 @@
+Problems to solve:
+
+remote server - setting up
+  - 8 calls instead of one
+
+async data fetch
+  - console.log lying - can see promise but not hit data in child
+  - componetDidMount or rando method?
+  - set state inside fetch or in constructor? why?
+  - async method or async fetch request?

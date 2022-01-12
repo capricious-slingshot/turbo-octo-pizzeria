@@ -4,31 +4,61 @@ import Card from './Card'
 //is there a classier alternative to console.log? it's awful
 
 //pass to children
-  //issues with child consuming data - can't hit props. it just barfs.
+  //async issue
   //how can i even look at props ?
 
 class Accordion extends Component {
   constructor() {
     super()
-    this.pizzas = this.fetchData("pizzas")
-    this.microbrews = this.fetchData("microbrews")
-    this.appetizers = this.fetchData("appetizers")
-    this.calzoni = this.fetchData("calzoni")
-    this.salads = this.fetchData("salads")
-    this.wines = this.fetchData("wines")
-    this.gelato = this.fetchData("gelato")
-    this.nonalcholic = this.fetchData("nonalcholic")
+    this.menu = this.fetchData
+    this.state = {
+      isFetching: false,
+      pizzas: this.menu.pizzas,
+      microbrews: this.menu.microbrews,
+      appetizers: this.menu.appetizers,
+      calzoni: this.menu.calzoni,
+      salads: this.menu.salads,
+      wines: this.menu.wines,
+      gelato: this.menu.gelato,
+      nonalcholic: this.menu.nonalcholic
+    }
   }
 
-  fetchData(route) {
-    const baseUrl = 'http://localhost:3001/'
-    return fetch(baseUrl+route).then(response => response.json()).catch(err => console.log('There was an error:' + err))
+  //example I followed: https://dmitripavlutin.com/react-fetch-lifecycle-methods-hooks-suspense/
+
+  //why is this necessacary? can this be skipped? doesn't this get called afeter render?
+  componentDidMount() {
+    this.fetchData()
+  }
+
+  //how the fuck does this work? is this just garbage? state is changing, not props
+  componentDidUpdate(prevProps) {
+    if (prevProps.query !== this.props.query) {
+      this.fetchData();
+    }
+  }
+
+  async fetchData() {
+    this.setState({ isFetching: true })
+    try {
+      const response = await fetch(`http://localhost:3001/db`).then(resp=> resp.json())
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+    //set state with data somehow
+    this.setState({ isFetching: false })
   }
 
   render() {
+    if (this.state.isFetching) {
+      return <div>Fetching Menu....</div>;
+    }
     return (
       <div className="accordion accordion-flush" id="accordion">
-        {<Card data={this.pizzas} />}
+        {<Card data={this.state.pizzas} />}
       </div>
     )
   }

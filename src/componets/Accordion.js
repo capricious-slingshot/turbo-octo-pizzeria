@@ -3,11 +3,8 @@ import Card from './Card'
 
 import data from '../data'
 
-//is there a classier alternative to console.log? it's awful
-
 //pass to children
   //async issue
-  //how can i even look at props ?
 
 // class Accordion extends Component {
 //   constructor() {

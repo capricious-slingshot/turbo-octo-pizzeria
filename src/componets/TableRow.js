@@ -1,28 +1,15 @@
-import { Component } from 'react'
 
-class TableRow extends Component{
-  constructor(props) {
-    super(props)
-    this.tapNumber = props.tapNumber
-    this.brewery = props.brewery
-    this.beerName = props.beerName
-    this.abv = props.abv
-    this.state = props.state
-    this.ounces = props.ounces
-  }
+export default function TableRow(props){
+  const {tapNumber, brewery, beerName, abv, state, ounces} = props
 
-  render() {
-    return (
-      <tr>
-        <th>{ this.tapNumber }</th>
-        <th>{ this.brewery }</th>
-        <th>{ this.beerName }</th>
-        <th>{ this.abv }</th>
-        <th>{ this.state }</th>
-        <th>{ this.ounces }</th>
-      </tr>
-    )
-  }
+  return (
+    <tr>
+      <th>{ tapNumber }</th>
+      <th>{ brewery }</th>
+      <th>{ beerName }</th>
+      <th>{ abv }</th>
+      <th>{ state }</th>
+      <th>{ ounces }</th>
+    </tr>
+  )
 }
-
-export default TableRow

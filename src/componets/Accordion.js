@@ -74,7 +74,7 @@ class Accordion extends Component {
 
     return (
       <div className="accordion accordion-flush" id="accordion">
-        {Object.keys(data).map((section, key) => <Card data={data[section]} /> )}
+        {Object.keys(data).map((section, key) => <Card key={ key } data={data[section]} /> )}
       </div>
     )
   }

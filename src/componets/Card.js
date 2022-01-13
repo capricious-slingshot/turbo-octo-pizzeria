@@ -6,7 +6,7 @@ export default function Card(props) {
   const menu = props.data
 
   let isOpen = (menu.dataTarget === 'pizza') ? "show" : ""
-  let menuType = (menu.dataTarget === 'taps') ? <CardMenuTable data={menu} /> : menu.sections.map(section => <CardMenuSection data={section} />)
+  let menuType = (menu.dataTarget === 'taps') ? <CardMenuTable data={menu.tableRowItems} /> : menu.sections.map((section, index) => <CardMenuSection key={index} data={section} />)
 
   return (
     <div className="card">

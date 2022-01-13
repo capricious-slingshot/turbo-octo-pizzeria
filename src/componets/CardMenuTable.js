@@ -22,7 +22,7 @@ export default function CardMenuTable(props) {
                               tapNumber={item.tapNumber}
                               brewery={item.brewery}
                               beerName={item.beerName}
-                              bv={item.abv}
+                              abv={item.abv}
                               state={item.state}
                               ounces={item.ounces} />)}
       </tbody>

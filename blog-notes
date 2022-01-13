@@ -7,3 +7,7 @@ async data fetch
   - console.log lying - can see promise but not hit data in child viewed a
   - componetDidMount or rando method?
   - set state inside fetch or in constructor? why?
+
+
+data
+  had to be advusted several times to compensate for itteration

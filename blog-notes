@@ -4,6 +4,7 @@ remote server - setting up
   - 8 calls instead of one
 
 async data fetch
+//https://dmitripavlutin.com/react-fetch-lifecycle-methods-hooks-suspense/
   - console.log lying - can see promise but not hit data in child viewed a
   - componetDidMount or rando method?
   - set state inside fetch or in constructor? why?

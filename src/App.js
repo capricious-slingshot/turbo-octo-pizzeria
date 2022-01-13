@@ -29,28 +29,15 @@ import 'bootstrap/dist/js/bootstrap.js'
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Main from './componets/Main'
-import Header from './componets/Header'
-import Footer from './componets/Footer'
-import Accordion from './componets/Accordion'
+import Body from './componets/Body'
 import AccordianEdit from './componets/edit/AccordianEdit'
 import TableEdit from './componets/edit/TableEdit'
-
-
-function Menu() {
-  return (
-    <>
-      <Header />
-      <Main view={<Accordion />} />
-      <Footer phone={"206 - 269 - 2222"} streetAddress={"401 Cedar St"} city={"Seattle, WA 98121"} />
-    </>
-  )
-}
 
 export default function App() {
   
   return (
     <Routes>
-      <Route exact path='/' element={<Menu />} />
+      <Route exact path='/' element={<Body />} />
       <Route exact path='/pizza/edit' element={<Main view={<AccordianEdit />} />} />
       <Route exact path='/microbrews/edit' element={<Main view={<TableEdit />} />} />
       <Route exact path='/calzoni/edit' element={<Main view={<AccordianEdit />} />} />

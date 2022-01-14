@@ -1,11 +1,10 @@
 // TODOs:
 // baseline up and running: 
-// () 2: images file strucutre? background images not being loaded for accordian. I'm missunderstanding something dumb.
-// () clone this baseline for the three following itterations
+// () images file strucutre? background images not being loaded for accordian. I'm missunderstanding something dumb.
 
 // version 1: using plains json props and state:
-// 1: populate accordian from plain json - question about file structure here
-// 2: understanding basic crud at this level with state and props
+// (X) populate accordian from plain json - question about file structure here
+// () understanding basic crud at this level with state and props
 
 // version 2: redux
 // 1: understanding reducers and populating accordian with redux
@@ -34,7 +33,7 @@ import AccordianEdit from './componets/edit/AccordianEdit'
 import TableEdit from './componets/edit/TableEdit'
 
 export default function App() {
-  
+  //should state and fetch be called from here and passed around?
   return (
     <Routes>
       <Route exact path='/' element={<Body />} />

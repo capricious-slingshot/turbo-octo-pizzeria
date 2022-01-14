@@ -28,7 +28,7 @@ class Accordion extends Component {
 
   render() {
     if (this.state.isFetching) {
-      return <div>Fetching Menu....</div>;
+      return <h1 className="text-center mt-5">Fetching Menu....</h1>;
     }
     //when state updates via setState , triggers re-render automatically
     return (

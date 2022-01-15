@@ -77,6 +77,17 @@ table {
   max-width: 325px;
   text-align: center;
 }
+#editMenu {
+  margin-top: 100px;
+}
+#editMenu label,
+#editMenu p {
+  font-size: 20px;
+}
+#editMenu input,
+#editMenu textarea {
+  margin-bottom: 30px;
+}
 #accordion {
   margin-top: 20px;
   letter-spacing: 1.15px;

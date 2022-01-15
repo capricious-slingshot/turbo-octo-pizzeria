@@ -5,6 +5,7 @@ class AccordianEdit extends Component{
   //deriving state from props is anti-pattern
 
   //Questions:
+      // I need to abstract the fetch function - slug needed before the fetch
       // why can't I go down multiple key levels in my menu array?
       // why does this.state.menu['sections'].map not work? same level as menu['title'] and menu['description']
 
@@ -14,10 +15,10 @@ class AccordianEdit extends Component{
     sections: []
   }
 
-  async fetchData() {
+  async fetchData(slug) {
     this.setState({ isFetching: true })
     try {
-      const response = await fetch(`http://localhost:3001/pizzas`).then(resp => resp.json()).then(json => {
+      const response = await fetch(`http://localhost:3001/${slug}`).then(resp => resp.json()).then(json => {
         this.setState({
           menu: json,
           sections: json.sections,
@@ -33,7 +34,7 @@ class AccordianEdit extends Component{
   }
 
   componentDidMount() {
-    this.fetchData()
+    this.fetchData(this.props.slug)
   }
 
   handleChange = (e) => {

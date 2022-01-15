@@ -37,14 +37,14 @@ export default function App() {
   return (
     <Routes>
       <Route exact path='/' element={<Body />} />
-      <Route exact path='/pizza/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/microbrews/edit' element={<Main view={<TableEdit />} />} />
-      <Route exact path='/calzoni/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/appetizers/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/salads/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/wine/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/gelato/edit' element={<Main view={<AccordianEdit />} />} />
-      <Route exact path='/naDrinks/edit' element={<Main view={<AccordianEdit />} />} />
+      <Route exact path='/pizza/edit' element={<Main view={<AccordianEdit slug="pizzas"/>} />} />
+      <Route exact path='/microbrews/edit' element={<Main view={<TableEdit slug="microbrews" />} />} />
+      <Route exact path='/calzoni/edit' element={<Main view={<AccordianEdit slug="calzoni" />} />} />
+      <Route exact path='/appetizers/edit' element={<Main view={<AccordianEdit slug="appetizers"/>} />} />
+      <Route exact path='/salads/edit' element={<Main view={<AccordianEdit slug="salads" />} />} />
+      <Route exact path='/wine/edit' element={<Main view={<AccordianEdit slug="wines" />} />} />
+      <Route exact path='/gelato/edit' element={<Main view={<AccordianEdit slug="gelato" />} />} />
+      <Route exact path='/nonAlcoholic/edit' element={<Main view={<AccordianEdit slug="nonAlcoholic" />} />} />
     </Routes>
   )
 }

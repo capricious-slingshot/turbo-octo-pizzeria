@@ -4,7 +4,11 @@
 
 // version 1: using plains json props and state:
 // (X) populate accordian from plain json - question about file structure here
-// () understanding basic crud at this level with state and props
+// understanding basic crud at this level with state and props
+  //  (X) read
+  //  () update
+  //  () delete
+  //  () create
 
 // version 2: redux
 // 1: understanding reducers and populating accordian with redux
@@ -29,22 +33,20 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Main from './componets/Main'
 import Body from './componets/Body'
-import AccordianEdit from './componets/edit/AccordianEdit'
-import TableEdit from './componets/edit/TableEdit'
+import MenuEdit from './componets/edit/MenuEdit'
 
 export default function App() {
-  //should state and fetch be called from here and passed around?
   return (
     <Routes>
       <Route exact path='/' element={<Body />} />
-      <Route exact path='/pizza/edit' element={<Main view={<AccordianEdit slug="pizzas"/>} />} />
-      <Route exact path='/microbrews/edit' element={<Main view={<TableEdit slug="microbrews" />} />} />
-      <Route exact path='/calzoni/edit' element={<Main view={<AccordianEdit slug="calzoni" />} />} />
-      <Route exact path='/appetizers/edit' element={<Main view={<AccordianEdit slug="appetizers"/>} />} />
-      <Route exact path='/salads/edit' element={<Main view={<AccordianEdit slug="salads" />} />} />
-      <Route exact path='/wine/edit' element={<Main view={<AccordianEdit slug="wines" />} />} />
-      <Route exact path='/gelato/edit' element={<Main view={<AccordianEdit slug="gelato" />} />} />
-      <Route exact path='/nonAlcoholic/edit' element={<Main view={<AccordianEdit slug="nonAlcoholic" />} />} />
+      <Route exact path='/pizzas/edit' element={<Main view={<MenuEdit slug="pizzas"/>} />} />
+      <Route exact path='/microbrews/edit' element={<Main view={<MenuEdit slug="microbrews" />} />} />
+      <Route exact path='/calzoni/edit' element={<Main view={<MenuEdit slug="calzoni" />} />} />
+      <Route exact path='/appetizers/edit' element={<Main view={<MenuEdit slug="appetizers"/>} />} />
+      <Route exact path='/salads/edit' element={<Main view={<MenuEdit slug="salads" />} />} />
+      <Route exact path='/wines/edit' element={<Main view={<MenuEdit slug="wines" />} />} />
+      <Route exact path='/gelato/edit' element={<Main view={<MenuEdit slug="gelato" />} />} />
+      <Route exact path='/nonAlcoholic/edit' element={<Main view={<MenuEdit slug="nonAlcoholic" />} />} />
     </Routes>
   )
 }

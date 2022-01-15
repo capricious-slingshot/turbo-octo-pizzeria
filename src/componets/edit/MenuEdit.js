@@ -1,31 +1,43 @@
 import { Component } from 'react'
-import SubFormSection from './subFormSectionEdit'
+import SubFormTableEdit from './SubFormTableEdit'
+import SubFormSectionEdit from './SubFormSectionEdit'
 
-class AccordianEdit extends Component{
-  //deriving state from props is anti-pattern
-
+class AccordianEdit extends Component {
   //Questions:
-      // I need to abstract the fetch function - slug needed before the fetch
-      // why can't I go down multiple key levels in my menu array?
-      // why does this.state.menu['sections'].map not work? same level as menu['title'] and menu['description']
+  // further abstract the fetch function? seperate component?
+  // why can't I go down multiple key levels in my menu array?
+  // why does this.state.menu['sections'].map not work? same level as menu['title'] and menu['description']
 
+  //deriving state from props is anti-pattern
   state = {
     isFetching: false,
     menu: {},
-    sections: []
+    subMenuArray: []
   }
 
-  async fetchData(slug) {
+  templateArrayType(slug) {
+    return (slug === "microbrews") ? "tableRowItems" : "sections"
+  }
+
+  subFormComponetType() {
+
+    console.log('sub-menu-array', this.state.subMenuArray);
+    const comp = this.state.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
+    console.log('component', comp);
+    return comp;
+
+
+  }
+
+  async fetchData() {
+    const slug = this.props.slug
     this.setState({ isFetching: true })
     try {
-      const response = await fetch(`http://localhost:3001/${slug}`).then(resp => resp.json()).then(json => {
-        this.setState({
-          menu: json,
-          sections: json.sections,
-        })
-      })
-      if (!response.ok) {
-        throw Error(response.statusText)
+      const resp = await fetch(`http://localhost:3001/${slug}`)
+        .then(resp => resp.json())
+        .then(json => { this.setState({ menu: json, subMenuArray: json[`${this.templateArrayType(slug)}`] }) })
+      if (!resp.ok) {
+        throw Error(resp.statusText)
       }
     } catch (error) {
       console.log(`Error: ${error}`)
@@ -34,7 +46,7 @@ class AccordianEdit extends Component{
   }
 
   componentDidMount() {
-    this.fetchData(this.props.slug)
+    this.fetchData()
   }
 
   handleChange = (e) => {
@@ -54,7 +66,6 @@ class AccordianEdit extends Component{
       return <h1 className="text-center mt-5">Fetching Menu....</h1>
     }
 
-
     return (
       <>
         <h1 className="text-center mt-5">Edit {this.state.menu["title"]} Menu</h1>
@@ -71,10 +82,10 @@ class AccordianEdit extends Component{
               <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" value={this.state.menu["description"]} onChange={this.handleChange}></textarea>
             </div>
           </div>
-          {this.state.sections.map(section => <SubFormSection data={section} />)}
+          {/* {this.subFormComponetType} */}
           <hr />
           <div className="d-flex align-items-end flex-column">
-            <input type="submit" class="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save" />
+            <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save" />
           </div>
         </form>
       </>

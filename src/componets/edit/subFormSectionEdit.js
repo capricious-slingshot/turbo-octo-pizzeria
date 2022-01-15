@@ -3,8 +3,12 @@ import SubFormSectionItem from './subFormItemEdit'
 
 class subFormSectionEdit extends Component {
   // do I need a callback function to set previous state? how deos this work?
+  // do I need a callback function to set handleChange? how deos this work?
+
   render() {
     const id = this.props.data.id
+    const items = this.props.data.items
+
     return (
       <>
         <hr />
@@ -25,7 +29,7 @@ class subFormSectionEdit extends Component {
           </div>
         </div>
         <p>Items:</p>
-        {this.props.data.items.map(item => <SubFormSectionItem data={item} />)}
+        {items.map(item => <SubFormSectionItem data={item} />)}
       </>
     )
   }

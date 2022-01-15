@@ -7,7 +7,6 @@ class AccordianEdit extends Component{
   //Questions:
       // why can't I go down multiple key levels in my menu array?
       // why does this.state.menu['sections'].map not work? same level as menu['title'] and menu['description']
-      // is making nested sub forms the way to go here?
 
   state = {
     isFetching: false,

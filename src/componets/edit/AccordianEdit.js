@@ -71,7 +71,11 @@ class AccordianEdit extends Component{
               <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" value={this.state.menu["description"]} onChange={this.handleChange}></textarea>
             </div>
           </div>
-          { this.state.sections.map(section => <SubFormSection data={section} />) }
+          {this.state.sections.map(section => <SubFormSection data={section} />)}
+          <hr />
+          <div className="d-flex align-items-end flex-column">
+            <input type="submit" class="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save" />
+          </div>
         </form>
       </>
     )

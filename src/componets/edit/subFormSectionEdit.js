@@ -1,29 +1,31 @@
 import { Component } from 'react'
+import SubFormSectionItem from './subFormItemEdit'
 
 class subFormSectionEdit extends Component {
-  // do I need a call back function to set previous state?
-  // this.props.data.items.map(item => <subFormItem data={item} />
+  // do I need a callback function to set previous state? how deos this work?
   render() {
+    const id = this.props.data.id
     return (
       <>
+        <hr />
         <div className="form-group row">
-          <label htmlFor="sectionTitle" className="col-sm-2 col-form-label">Section Title:</label>
+          <label htmlFor={`section[${id}]'title']`} className="col-sm-2 col-form-label">Section Title:</label>
           <div className="col-sm-4">
-            <input type="text" name="section1['title']" id="sectionTitle" className="form-control" value={this.props.data.title} onChange={this.handleChange} />
+            <input type="text" name={`section[${id}]'title']`} id={`section[${id}]'title']`} className="form-control" value={this.props.data.title} onChange={this.handleChange} />
           </div>
-          <label htmlFor="sectionColTitle" className="col-sm-2 col-form-label">Section SubTitle:</label>
+          <label htmlFor={`section[${id}]'colTitle']`} className="col-sm-2 col-form-label">Section SubTitle:</label>
           <div className="col-sm-4">
-            <input type="text" name="section['colTitle']" id="sectionColTitle" className="form-control" value={this.props.data.colTitle} onChange={this.handleChange} />
+            <input type="text" name={`section[${id}]'colTitle']`} id={`section[${id}]'colTitle']`} className="form-control" value={this.props.data.colTitle} onChange={this.handleChange} />
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="sectionDescription" className="col-sm-2 col-form-label">Section Description:</label>
+          <label htmlFor={`section[${id}]'description']`} className="col-sm-2 col-form-label">Section Description:</label>
           <div className="col-sm-10">
-            <input type="text" name="section['description']" id="sectionDescription" className="form-control" value={this.props.data.description} onChange={this.handleChange} />
+            <input type="text" name={`section[${id}]'description']`} id={`section[${id}]'description']`} className="form-control" value={this.props.data.description} onChange={this.handleChange} />
           </div>
         </div>
         <p>Items:</p>
-        
+        {this.props.data.items.map(item => <SubFormSectionItem data={item} />)}
       </>
     )
   }

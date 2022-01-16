@@ -1,7 +1,6 @@
 // Questions:
 // further abstract the fetch function? seperate component?
 
-
 import { Component } from 'react'
 import SubFormTableEdit from './SubFormTableEdit'
 import SubFormSectionEdit from './SubFormSectionEdit'
@@ -15,7 +14,7 @@ class MainEdit extends Component {
   }
 
   subFormComponentType() {
- 
+    //solves async issue
     if (this.state.menu && this.state.menu.subMenuArray) {
       return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
     }
@@ -44,7 +43,7 @@ class MainEdit extends Component {
     //mymenu.description = e.target.value;
     // this.setState({ menu : mymenu})
 
-    //how to work with nested componets here - callback and complicated naming due to nesting 
+    //how to work with nested componets here - callback and complicated naming due to nesting
     this.setState(this.state.menu[e.target.name], e.target.value)
   }
 

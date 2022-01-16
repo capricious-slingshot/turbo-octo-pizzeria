@@ -4,7 +4,7 @@ class SubFormTableEdit extends Component{
 //Questions:
   //look at validations
   // look at callbacks
-  // how to put data back together before post
+  // how to put data back together before post request
   
   render() {
     const id = this.props.data.id

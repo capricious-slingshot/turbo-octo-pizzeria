@@ -13,13 +13,12 @@ export default function Body() {
             <div className="col-sm flex">
               <form>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1" hidden>Email address</label>
-                  <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address" />
-                  <small id="emailHelp" className="form-text text-muted" hidden>We'll never share your email with anyone else.</small>
+                  <label htmlFor="userName" hidden>Email address</label>
+                  <input type="text" className="form-control" id="userName" aria-describedby="username" placeholder="Username" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputPassword1" hidden>Password</label>
-                  <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                  <label htmlFor="password" hidden>Password</label>
+                  <input type="password" className="form-control" id="password" placeholder="Password" />
                 </div>
                 <div className="form-group">
                   <button type="submit" className="btn btn-info text-white btn-lg">Submit</button>

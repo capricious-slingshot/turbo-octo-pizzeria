@@ -35,12 +35,13 @@ import { Routes, Route } from 'react-router-dom'
 import Body from './components/Body'
 import Main from './components/Main'
 import AdminBody from './components/admin/AdminBody'
+import Login from './components/admin/Login'
 
 export default function App() {
   return (
     <Routes>
       <Route exact path='/' element={<Body />} />
-      <Route exact path='/admin' element={<Main view={<AdminBody slug="pizzas"/>} />} />
+      <Route exact path='/admin' element={<Main view={<Login />} />} />
       <Route exact path='/admin/pizzas/edit' element={<Main view={<AdminBody slug="pizzas"/>} />} />
       <Route exact path='/admin/microbrews/edit' element={<Main view={<AdminBody slug="microbrews" />} />} />
       <Route exact path='/admin/calzoni/edit' element={<Main view={<AdminBody slug="calzoni" />} />} />

@@ -3,10 +3,10 @@ import CardMenuTable from './CardMenuTable'
 
 export default function Card(props) {
 
-  const {dataTarget, title, description, sections, tableRowItems}= props.data
+  const {dataTarget, title, description, subMenuArray}= props.data
 
   let isOpen = (dataTarget === 'pizza') ? "show" : ""
-  let menuType = (dataTarget === 'taps') ? <CardMenuTable data={tableRowItems} /> : sections.map((section, index) => <CardMenuSection key={index} data={section} />)
+  let menuType = (dataTarget === 'taps') ? <CardMenuTable data={subMenuArray} /> : subMenuArray.map((section, index) => <CardMenuSection key={index} data={section} />)
 
   return (
     <div className="card">

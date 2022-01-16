@@ -1,12 +1,10 @@
 // Questions:
-// further abstract the fetch function? seperate component?
-
 
 import { Component } from 'react'
 import SubFormTableEdit from './SubFormTableEdit'
 import SubFormSectionEdit from './SubFormSectionEdit'
 
-class MainEdit extends Component {
+class MenuEdit extends Component {
 
   //deriving state from props is anti-pattern
   state = {
@@ -15,7 +13,7 @@ class MainEdit extends Component {
   }
 
   subFormComponentType() {
- 
+    //solves async issue
     if (this.state.menu && this.state.menu.subMenuArray) {
       return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
     }
@@ -25,8 +23,8 @@ class MainEdit extends Component {
 
   async fetchData() {
     const slug = this.props.slug
-    this.setState({ isFetching: true })    
-    
+    this.setState({ isFetching: true })
+
     await fetch(`http://localhost:3001/${slug}`)
       .then(data => data.json())
       .then((data) => { this.setState({ menu: data }) })
@@ -44,7 +42,7 @@ class MainEdit extends Component {
     //mymenu.description = e.target.value;
     // this.setState({ menu : mymenu})
 
-    //how to work with nested componets here - callback and complicated naming due to nesting 
+    //how to work with nested components here - callback and complicated naming due to nesting
     this.setState(this.state.menu[e.target.name], e.target.value)
   }
 
@@ -60,7 +58,6 @@ class MainEdit extends Component {
 
     return (
       <>
-        <h1 className="text-center mt-5">Edit {this.state.menu["title"]} Menu</h1>
         <form onSubmit={this.previewModal} id="editMenu">
           <div className="form-group row">
             <label htmlFor="title" className="col-sm-2 col-form-label">Menu Title:</label>
@@ -85,7 +82,7 @@ class MainEdit extends Component {
   }
 }
 
-export default MainEdit
+export default MenuEdit
 
 
 

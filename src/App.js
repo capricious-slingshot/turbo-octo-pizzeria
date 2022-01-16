@@ -32,22 +32,23 @@ import 'bootstrap/dist/js/bootstrap.js'
 
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Main from './componets/Main'
-import Body from './componets/Body'
-import MenuEdit from './componets/edit/MenuEdit'
+import Body from './components/Body'
+import Main from './components/Main'
+import AdminBody from './components/admin/AdminBody'
 
 export default function App() {
   return (
     <Routes>
       <Route exact path='/' element={<Body />} />
-      <Route exact path='/pizzas/edit' element={<Main view={<MenuEdit slug="pizzas"/>} />} />
-      <Route exact path='/microbrews/edit' element={<Main view={<MenuEdit slug="microbrews" />} />} />
-      <Route exact path='/calzoni/edit' element={<Main view={<MenuEdit slug="calzoni" />} />} />
-      <Route exact path='/appetizers/edit' element={<Main view={<MenuEdit slug="appetizers"/>} />} />
-      <Route exact path='/salads/edit' element={<Main view={<MenuEdit slug="salads" />} />} />
-      <Route exact path='/wines/edit' element={<Main view={<MenuEdit slug="wines" />} />} />
-      <Route exact path='/gelato/edit' element={<Main view={<MenuEdit slug="gelato" />} />} />
-      <Route exact path='/nonAlcoholic/edit' element={<Main view={<MenuEdit slug="nonAlcoholic" />} />} />
+      <Route exact path='/admin' element={<Main view={<AdminBody slug="pizzas"/>} />} />
+      <Route exact path='/admin/pizzas/edit' element={<Main view={<AdminBody slug="pizzas"/>} />} />
+      <Route exact path='/admin/microbrews/edit' element={<Main view={<AdminBody slug="microbrews" />} />} />
+      <Route exact path='/admin/calzoni/edit' element={<Main view={<AdminBody slug="calzoni" />} />} />
+      <Route exact path='/admin/appetizers/edit' element={<Main view={<AdminBody slug="appetizers"/>} />} />
+      <Route exact path='/admin/salads/edit' element={<Main view={<AdminBody slug="salads" />} />} />
+      <Route exact path='/admin/wines/edit' element={<Main view={<AdminBody slug="wines" />} />} />
+      <Route exact path='/admin/gelato/edit' element={<Main view={<AdminBody slug="gelato" />} />} />
+      <Route exact path='/admin/nonAlcoholic/edit' element={<Main view={<AdminBody slug="nonAlcoholic" />} />} />
     </Routes>
   )
 }

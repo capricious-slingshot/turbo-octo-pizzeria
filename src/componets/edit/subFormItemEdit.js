@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-class subFormItemEdit extends Component {
+class SubFormItemEdit extends Component {
   render() {
     const id = this.props.data.id
     return (
@@ -24,4 +24,4 @@ class subFormItemEdit extends Component {
   }
 }
 
-export default subFormItemEdit
+export default SubFormItemEdit

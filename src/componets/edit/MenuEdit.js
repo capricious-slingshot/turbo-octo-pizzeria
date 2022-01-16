@@ -2,7 +2,7 @@ import { Component } from 'react'
 import SubFormTableEdit from './SubFormTableEdit'
 import SubFormSectionEdit from './SubFormSectionEdit'
 
-class AccordianEdit extends Component {
+class MainEdit extends Component {
   //Questions:
   // further abstract the fetch function? seperate component?
   // why can't I go down multiple key levels in my menu array?
@@ -15,33 +15,32 @@ class AccordianEdit extends Component {
     subMenuArray: []
   }
 
-  templateArrayType(slug) {
-    return (slug === "microbrews") ? "tableRowItems" : "sections"
-  }
-
-  subFormComponetType() {
-
-    console.log('sub-menu-array', this.state.subMenuArray);
-    const comp = this.state.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
-    console.log('component', comp);
-    return comp;
-
-
+  subFormComponentType() {
+    return this.state.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
   }
 
   async fetchData() {
     const slug = this.props.slug
     this.setState({ isFetching: true })
-    try {
-      const resp = await fetch(`http://localhost:3001/${slug}`)
-        .then(resp => resp.json())
-        .then(json => { this.setState({ menu: json, subMenuArray: json[`${this.templateArrayType(slug)}`] }) })
-      if (!resp.ok) {
-        throw Error(resp.statusText)
-      }
-    } catch (error) {
-      console.log(`Error: ${error}`)
-    }
+    // try {
+      // const resp = await fetch(`http://localhost:3001/${slug}`)
+      //   .then(resp => resp.json())
+      //   .then(json => { this.setState({ menu: json, subMenuArray: json[`${this.templateArrayType(slug)}`] }) })
+      // if (!resp.ok) {
+      //   throw Error(resp.statusText)
+      // }
+    
+    
+    await fetch(`http://localhost:3001/${slug}`)
+      .then(data => data.json())
+      .then((data) => { 
+        this.setState({
+          menu: data,
+          subMenuArray: data.sections ? data.sections : data.tableRowItems
+        });
+      })
+      .catch(error => console.log(error));
+
     this.setState({ isFetching: false })
   }
 
@@ -82,7 +81,7 @@ class AccordianEdit extends Component {
               <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" value={this.state.menu["description"]} onChange={this.handleChange}></textarea>
             </div>
           </div>
-          {/* {this.subFormComponetType} */}
+          {this.subFormComponentType()}
           <hr />
           <div className="d-flex align-items-end flex-column">
             <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save" />
@@ -93,7 +92,7 @@ class AccordianEdit extends Component {
   }
 }
 
-export default AccordianEdit
+export default MainEdit
 
 
 

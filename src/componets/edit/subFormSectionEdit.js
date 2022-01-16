@@ -1,7 +1,7 @@
 import { Component } from 'react'
-import SubFormSectionItem from './subFormItemEdit'
+import SubFormSectionItem from './SubFormItemEdit'
 
-class subFormSectionEdit extends Component {
+class SubFormSectionEdit extends Component {
   // do I need a callback function to set previous state? how deos this work?
   // do I need a callback function to set handleChange? how deos this work?
 
@@ -35,4 +35,4 @@ class subFormSectionEdit extends Component {
   }
 }
 
-export default subFormSectionEdit
+export default SubFormSectionEdit

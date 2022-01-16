@@ -3,50 +3,32 @@ import SubFormTableEdit from './SubFormTableEdit'
 import SubFormSectionEdit from './SubFormSectionEdit'
 
 class MainEdit extends Component {
-  //Questions:
+  // Questions:
   // further abstract the fetch function? seperate component?
-  // why can't I go down multiple key levels in my menu array?
-  // why does this.state.menu['sections'].map not work? same level as menu['title'] and menu['description']
 
   //deriving state from props is anti-pattern
   state = {
     isFetching: false,
-    menu: {},
-    subMenuArray: []
+    menu: {}
   }
 
   subFormComponentType() {
-    // const [sections, tableRowItems] = this.state.menu;
-
-    // console.log(sections, tableRowItems);
-
-    return this.state.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
-    // return this.state.menu.sections.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
-
-
+ 
+    if (this.state.menu && this.state.menu.subMenuArray) {
+      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
+    }
+    // empty that doesn't meet criteria
+    return null
   }
 
   async fetchData() {
     const slug = this.props.slug
-    this.setState({ isFetching: true })
-    // try {
-      // const resp = await fetch(`http://localhost:3001/${slug}`)
-      //   .then(resp => resp.json())
-      //   .then(json => { this.setState({ menu: json, subMenuArray: json[`${this.templateArrayType(slug)}`] }) })
-      // if (!resp.ok) {
-      //   throw Error(resp.statusText)
-      // }
-    
+    this.setState({ isFetching: true })    
     
     await fetch(`http://localhost:3001/${slug}`)
       .then(data => data.json())
-      .then((data) => { 
-        this.setState({
-          menu: data,
-          subMenuArray: data.sections ? data.sections : data.tableRowItems
-        });
-      })
-      .catch(error => console.log(error));
+      .then((data) => { this.setState({ menu: data }) })
+      .catch(error => console.log(error))
 
     this.setState({ isFetching: false })
   }
@@ -56,10 +38,7 @@ class MainEdit extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({
-      // menu[e.target.name]: e.target.value //dynamic name value
-      // menu["title"]: e.target.value
-    })
+    this.setState(this.state.menu[e.target.name], e.target.value)
   }
 
   handleSubmit = (e) => {

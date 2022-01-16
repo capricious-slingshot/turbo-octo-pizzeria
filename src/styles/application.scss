@@ -194,11 +194,9 @@ footer {
   }
   .btn-social-icon {
     border: 1px solid $color-text;
-    float: right;
     margin-left: 10px;
   }
   #copyright {
-    clear: right;
     text-align: right;
     padding-top: 15px;
     color: $color-text;
@@ -230,20 +228,21 @@ footer {
   #editMenu {
     margin-top: 350px;
   }
+  footer {
+    #googleMap {
+      margin-top: 40px;
+    }
+  }
 }
-// @media screen and (max-width: 876px) {
-//   #editMenu {
-//     margin-top: 400px;
-//   }
-// }
 @media screen and (min-width: 992px) {
   #editMenu {
     margin-top: 300px;
   }
   footer {
-    margin-top: 80px;
+    margin-top: 80px auto 0;
     #googleMap {
       margin-top: 0;
+      width: 450px;
     }
   }
 }

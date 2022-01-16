@@ -77,8 +77,16 @@ table {
   max-width: 325px;
   text-align: center;
 }
+.nav li a {
+  font-size: 24px;
+  color: #750000;
+  font-weight: bold;
+}
+.nav li a:hover {
+  color: $color-background;
+}
 #editMenu {
-  margin-top: 100px;
+  margin-top: 250px;
 }
 #editMenu label,
 #editMenu p {
@@ -201,19 +209,51 @@ footer {
 }
 
 /*-------------------------------------*/
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 500px) {
+  #editMenu {
+    margin-top: 700px;
+  }
+}
+@media screen and (min-width: 500px) {
+  #editMenu {
+    margin-top: 350px;
+  }
+}
+
+@media screen and (min-width: 700px) {
   #headerInfo {
     padding-top: 30px;
   }
   #logo {
     margin-left: 0;
   }
+  #editMenu {
+    margin-top: 350px;
+  }
 }
+// @media screen and (max-width: 876px) {
+//   #editMenu {
+//     margin-top: 400px;
+//   }
+// }
 @media screen and (min-width: 992px) {
+  #editMenu {
+    margin-top: 300px;
+  }
   footer {
     margin-top: 80px;
     #googleMap {
       margin-top: 0;
     }
+  }
+}
+@media screen and (min-width: 1025px) {
+  #editMenu {
+    margin-top: 300px;
+  }
+}
+@media screen and (min-width: 1350px) {
+  #editMenu {
+    margin-top: 250px;
   }
 }

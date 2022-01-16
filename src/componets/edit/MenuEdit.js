@@ -1,10 +1,12 @@
+// Questions:
+// further abstract the fetch function? seperate component?
+
+
 import { Component } from 'react'
 import SubFormTableEdit from './SubFormTableEdit'
 import SubFormSectionEdit from './SubFormSectionEdit'
 
 class MainEdit extends Component {
-  // Questions:
-  // further abstract the fetch function? seperate component?
 
   //deriving state from props is anti-pattern
   state = {
@@ -17,7 +19,7 @@ class MainEdit extends Component {
     if (this.state.menu && this.state.menu.subMenuArray) {
       return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
     }
-    // empty that doesn't meet criteria
+    // catch: doesn't meet criteria
     return null
   }
 
@@ -38,6 +40,11 @@ class MainEdit extends Component {
   }
 
   handleChange = (e) => {
+    // mymenu object = this.state.menu
+    //mymenu.description = e.target.value;
+    // this.setState({ menu : mymenu})
+
+    //how to work with nested componets here - callback and complicated naming due to nesting 
     this.setState(this.state.menu[e.target.name], e.target.value)
   }
 

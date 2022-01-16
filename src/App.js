@@ -1,10 +1,11 @@
 // TODOs:
-// baseline up and running: 
+// baseline up and running:
 // () images file strucutre? background images not being loaded for accordian. I'm missunderstanding something dumb.
 
 // version 1: using plains json props and state:
 // (X) populate accordian from plain json - question about file structure here
-// understanding basic crud at this level with state and props
+// building out admin page
+// understanding basic crud at this level with state and props for admin page
   //  (X) read
   //  () update
   //  () delete

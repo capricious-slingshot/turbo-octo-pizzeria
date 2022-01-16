@@ -16,7 +16,14 @@ class MainEdit extends Component {
   }
 
   subFormComponentType() {
+    // const [sections, tableRowItems] = this.state.menu;
+
+    // console.log(sections, tableRowItems);
+
     return this.state.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
+    // return this.state.menu.sections.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit data={menu} /> : <SubFormSectionEdit data={menu} />)
+
+
   }
 
   async fetchData() {

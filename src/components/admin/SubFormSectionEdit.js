@@ -29,7 +29,7 @@ class SubFormSectionEdit extends Component {
           </div>
         </div>
         <p>Items:</p>
-        {items.map(item => <SubFormSectionItem data={item} />)}
+        {items.map(item => <SubFormSectionItem key={item.id} data={item} />)}
       </>
     )
   }

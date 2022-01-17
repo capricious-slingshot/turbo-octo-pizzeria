@@ -5,7 +5,7 @@ $logo-color: #0a0a0a;
 $card-default: rgb(70, 61, 52);
 $odd-table-row: rgb(180, 179, 179);
 
-$bg-img: url("../img/ovenFire.png");
+$bg-img: url("images/ovenFire.png");
 
 $overlay-10: rgba(5, 5, 5, 0.1);
 $overlay-35: rgba(5, 5, 5, 0.35);
@@ -22,7 +22,6 @@ $overlay-75: rgba(5, 5, 5, 0.75);
   src: local("Raleway"),
     url(../fonts/Raleway/Raleway-VariableFont_wght.ttf) format("truetype");
 }
-
 $body-font: "Raleway", sans-serif;
 $header-font: "Gruppo", sans-serif;
 
@@ -179,34 +178,42 @@ table {
 }
 #pizza-card {
   background-attachment: fixed;
-  background: no-repeat $bg-img $card-default;
+  background: url("http://localhost:3001/images/ovenFire.png") no-repeat
+    $card-default;
 }
 #calzoni-card {
   background-attachment: fixed;
-  background: no-repeat url("../img/calzoni.png") $card-default;
+  background: url("http://localhost:3001/images/calzoni.png") no-repeat
+    $card-default;
 }
 #appetizers-card {
-  background: no-repeat url("../img/olives.png") $card-default;
+  background: url("http://localhost:3001/images/olives.png") no-repeat
+    $card-default;
 }
 #salad-card {
-  background: no-repeat url("../img/salad-2.png") $card-default;
+  background: url("http://localhost:3001/images/salad-2.png") no-repeat
+    $card-default;
   background-size: cover;
 }
 #gelato-card {
-  background: no-repeat url("../img/gelato.png") $card-default;
+  background: url("http://localhost:3001/images/gelato.png") no-repeat
+    $card-default;
 }
 #tap-card {
   background-attachment: fixed;
-  background: no-repeat url("../img/beer.png") $card-default;
+  background: url("http://localhost:3001/images/beer.png") no-repeat
+    $card-default;
   background-size: cover;
 }
 #vino-card {
   background-attachment: fixed;
-  background: no-repeat url("../img/wine.png") rgb(70, 61, 52);
+  background: url("http://localhost:3001/images/wine.png") no-repeat
+    $card-default;
   background-size: cover;
 }
 #na-bev-card {
-  background: no-repeat url("../img/naBev.png") rgb(70, 61, 52);
+  background: url("http://localhost:3001/images/naBev.png") no-repeat
+    $card-default;
   width: 100%;
   background-position: 60% 40%;
 }

@@ -178,41 +178,41 @@ table {
 }
 #pizza-card {
   background-attachment: fixed;
-  background: url("http://localhost:3001/images/ovenFire.png") no-repeat
+  background: url("http://localhost:3001//images/ovenFire.png") no-repeat
     $card-default;
 }
 #calzoni-card {
   background-attachment: fixed;
-  background: url("http://localhost:3001/images/calzoni.png") no-repeat
+  background: url("http://localhost:3001//images/calzoni.png") no-repeat
     $card-default;
 }
 #appetizers-card {
-  background: url("http://localhost:3001/images/olives.png") no-repeat
+  background: url("http://localhost:3001//images/olives.png") no-repeat
     $card-default;
 }
 #salad-card {
-  background: url("http://localhost:3001/images/salad-2.png") no-repeat
+  background: url("http://localhost:3001//images/salad-2.png") no-repeat
     $card-default;
   background-size: cover;
 }
 #gelato-card {
-  background: url("http://localhost:3001/images/gelato.png") no-repeat
+  background: url("http://localhost:3001//images/gelato.png") no-repeat
     $card-default;
 }
 #tap-card {
   background-attachment: fixed;
-  background: url("http://localhost:3001/images/beer.png") no-repeat
+  background: url("http://localhost:3001//images/beer.png") no-repeat
     $card-default;
   background-size: cover;
 }
 #vino-card {
   background-attachment: fixed;
-  background: url("http://localhost:3001/images/wine.png") no-repeat
+  background: url("http://localhost:3001//images/wine.png") no-repeat
     $card-default;
   background-size: cover;
 }
 #na-bev-card {
-  background: url("http://localhost:3001/images/naBev.png") no-repeat
+  background: url("http://localhost:3001//images/naBev.png") no-repeat
     $card-default;
   width: 100%;
   background-position: 60% 40%;

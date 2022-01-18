@@ -1,4 +1,7 @@
 // Questions:
+  // LifeCycle handleChange:
+    // LifeCycle issue: If two changes to the nested object got batched the last change would overwrite the first:
+    // this.setState((prevState) => ({ nested: { ...prevState.nested, propertyToSet: newValue } } - not quite the right syntax
 
 import { Component } from 'react'
 import SubFormTableEdit from './SubFormTableEdit'
@@ -15,7 +18,7 @@ class MenuEdit extends Component {
   subFormComponentType() {
     //solves async issue
     if (this.state.menu && this.state.menu.subMenuArray) {
-      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} /> : <SubFormSectionEdit key={menu.id} data={menu} />)
+      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange} /> : <SubFormSectionEdit key={menu.id} data={menu} handleTableChange={this.handleTableChange}/>)
     }
     // catch: doesn't meet criteria
     return null
@@ -38,18 +41,57 @@ class MenuEdit extends Component {
   }
 
   handleChange = (e) => {
+    console.log(e)
     const menu = {...this.state.menu}
     menu[e.target.name] = e.target.value
-    this.setState({ menu })
-    
-    
-    // how to work with nested components here - callback and complicated naming due to nesting:
-    // console.log(e)
-    // LifeCycle issue: If two changes to the nested object got batched the last change would overwrite the first:
-    // this.setState((prevState) => ({ nested: { ...prevState.nested, propertyToSet: newValue } }
-    // this.setState((prevState) => ({ menu[e.target.name]: { ...prevState.menu[e.target.name], e.target.name: e.target.value } }
-    
+    this.setState( prevState => ({ menu }))
   }
+
+  handleSectionChange = (e) => {
+    console.log(e)  //not currently even hitting method
+    // Attempt 1:
+    //complete data structure: this.state.menu.subMenuArray[?child.props.key?]['items'][?index?][e.target.name] = e.target.value
+
+    // const menu = {...this.state.menu.subMenuArray}
+    // menu[?child.props.key?]['items'][?index?][e.target.name] = e.target.value
+    // this.setState( prevState => ({ menu }))
+
+    // how to work with nested components here - callback and complicated naming due to nesting:
+
+    // Attempt 2:
+    //need:
+    // [child.props.key] - how to get subMenuArray index (or id) - this is passed to child in props, can I pass back as an attribute?
+    // [itemIndex] - how to get item index (or id)
+    
+    // final implementation should look something like this:
+    // this.setState(prevState => ({
+    //   ...prevState, subMenuArray: {
+    //     ...prevState.subMenuArray, [child.props.key]: {
+    //       ...prevState.subMenuArray[child.props.key], ['items']: {
+    //         ...prevState.subMenuArray[child.props.key]['items'], [itemIndex]: {
+    //           ...prevState.subMenuArray[child.props.key]['items'][itemIndex],
+    //              [e.target.name]: e.target.value
+    //         }
+    //       }
+    //     }
+    //   }
+    // })
+  }
+
+  handleTableChange = (e) => {
+    console.log(e)  //not currently even hitting method
+
+    // this.setState(prevState => ({
+    //   ...prevState, subMenuArray: {
+    //     ...prevState.subMenuArray, [0]: {
+    //       ...prevState.subMenuArray[0],
+                // [e.target.name]: e.target.value
+    //         }
+    //       }
+    //     }
+    //   }
+    // })
+    }
 
   handleSubmit = (e) => {
     e.preventDefault()

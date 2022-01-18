@@ -3,19 +3,20 @@ import { Component } from 'react'
 class SubFormItemEdit extends Component {
   render() {
     const id = this.props.data.id
+    const handleChange = this.props.handleChange
     return (
       <>
         <div className="form-group row">
           <div className="col-sm-6">
-            <input type="text" name={`item[${id}]'name']`} id={`item[${id}]'name']`} className="form-control" value={this.props.data.name} onChange={this.handleChange} />
+            <input type="text" name={`[${id}]['name']`} id={`[${id}]['name']`} className="form-control" value={this.props.data.name} onChange={handleChange} />
           </div>
           <div className="col-sm-6">
-            <input type="text" name={`item[${id}]'price']`} id={`item[${id}]'price']`} className="form-control" value={this.props.data.price} onChange={this.handleChange} />
+            <input type="text" name={`[${id}]['price']`} id={`[${id}]['price']`} className="form-control" value={this.props.data.price} onChange={handleChange} />
         </div>
         </div>
         <div className="form-group row">
           <div className="col-sm-12">
-            <textarea name={`item[${id}]'description']`} id={`item[${id}]'description']`} rows="3" cols="60" className="form-control" value={this.props.data.description} onChange={this.handleChange}></textarea>
+            <textarea name={`[${id}]['description']`} id={`[${id}]['description']`} rows="3" cols="60" className="form-control" value={this.props.data.description} onChange={handleChange}></textarea>
           </div>
         </div>
         <br /><br />

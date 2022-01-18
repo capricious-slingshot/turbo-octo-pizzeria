@@ -47,8 +47,8 @@ class MenuEdit extends Component {
     this.setState( prevState => ({ menu }))
   }
 
-  handleSectionChange = (e) => {
-    console.log(e)  //not currently even hitting method
+  // handleSectionChange = (e) => {
+    // console.log(e)  //not currently even hitting method
     // Attempt 1:
     //complete data structure: this.state.menu.subMenuArray[?child.props.key?]['items'][?index?][e.target.name] = e.target.value
 
@@ -76,10 +76,10 @@ class MenuEdit extends Component {
     //     }
     //   }
     // })
-  }
+  // }
 
-  handleTableChange = (e) => {
-    console.log(e)  //not currently even hitting method
+  // handleTableChange = (e) => {
+    // console.log(e)  //not currently even hitting method
 
     // this.setState(prevState => ({
     //   ...prevState, subMenuArray: {
@@ -91,7 +91,7 @@ class MenuEdit extends Component {
     //     }
     //   }
     // })
-    }
+    // }
 
   handleSubmit = (e) => {
     e.preventDefault()

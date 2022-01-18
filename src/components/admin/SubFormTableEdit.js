@@ -8,6 +8,9 @@ class SubFormTableEdit extends Component{
   render() {
     const beer = this.props.data
     const handleItemChange = this.props.handleTableRowChange
+    // const handleItemChange = this.props.handleTableRowChange.bind(this)  //nope
+    // const handleItemChange = (e) => this.props.handleTableRowChange  //nope
+
 
     return (
       <>

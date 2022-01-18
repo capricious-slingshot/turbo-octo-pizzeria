@@ -6,26 +6,29 @@ class SubFormSectionEdit extends Component {
   // do I need a callback function to set handleChange? how deos this work?
 
   render() {
-    const id = this.props.data.id
+    const section = this.props.data
     const items = this.props.data.items
+    const handleSectionChange = this.props.handleChange
+    // const handleSectionChange = this.props.handleChange.bind(this)  //nope
+    // const handleSectionChange = (e) => this.props.handleChange  //nope
 
     return (
       <>
         <hr />
         <div className="form-group row">
-          <label htmlFor={`section[${id}]'title']`} className="col-sm-2 col-form-label">Section Title:</label>
+          <label htmlFor={`section[${section.id}]'title']`} className="col-sm-2 col-form-label">Section Title:</label>
           <div className="col-sm-4">
-            <input type="text" name={`section[${id}]'title']`} id={`section[${id}]'title']`} className="form-control" value={this.props.data.title} onChange={this.handleChange} />
+            <input type="text" name={`section[${section.id}]'title']`} id={`section[${section.id}]'title']`} className="form-control" value={section.title} onChange={handleSectionChange} />
           </div>
-          <label htmlFor={`section[${id}]'colTitle']`} className="col-sm-2 col-form-label">Section SubTitle:</label>
+          <label htmlFor={`section[${section.id}]'colTitle']`} className="col-sm-2 col-form-label">Section SubTitle:</label>
           <div className="col-sm-4">
-            <input type="text" name={`section[${id}]'colTitle']`} id={`section[${id}]'colTitle']`} className="form-control" value={this.props.data.colTitle} onChange={this.handleChange} />
+            <input type="text" name={`section[${section.id}]'colTitle']`} id={`section[${section.id}]'colTitle']`} className="form-control" value={section.colTitle} onChange={handleSectionChange} />
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor={`section[${id}]'description']`} className="col-sm-2 col-form-label">Section Description:</label>
+          <label htmlFor={`section[${section.id}]'description']`} className="col-sm-2 col-form-label">Section Description:</label>
           <div className="col-sm-10">
-            <input type="text" name={`section[${id}]'description']`} id={`section[${id}]'description']`} className="form-control" value={this.props.data.description} onChange={this.handleChange} />
+            <input type="text" name={`section[${section.id}]'description']`} id={`section[${section.id}]'description']`} className="form-control" value={section.description} onChange={handleSectionChange} />
           </div>
         </div>
         <p>Items:</p>

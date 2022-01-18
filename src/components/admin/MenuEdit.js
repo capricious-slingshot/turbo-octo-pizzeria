@@ -38,13 +38,17 @@ class MenuEdit extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e)
-    // menu object = this.state.menu
-    // menu.description = e.target.value;
-    // this.setState({ menu : mymenu})
-
-    //how to work with nested components here - callback and complicated naming due to nesting
-    // this.setState(this.state.menu[e.target.name], e.target.value)
+    const menu = {...this.state.menu}
+    menu[e.target.name] = e.target.value
+    this.setState({ menu })
+    
+    
+    // how to work with nested components here - callback and complicated naming due to nesting:
+    // console.log(e)
+    // LifeCycle issue: If two changes to the nested object got batched the last change would overwrite the first:
+    // this.setState((prevState) => ({ nested: { ...prevState.nested, propertyToSet: newValue } }
+    // this.setState((prevState) => ({ menu[e.target.name]: { ...prevState.menu[e.target.name], e.target.name: e.target.value } }
+    
   }
 
   handleSubmit = (e) => {
@@ -53,6 +57,7 @@ class MenuEdit extends Component {
   }
 
   render() {
+    console.log(this.state.title)
     if (this.state.isFetching) {
       return <h1 className="text-center mt-5">Fetching Menu....</h1>
     }
@@ -60,17 +65,17 @@ class MenuEdit extends Component {
     const menu = this.state.menu
     return (
       <>
-        <form onSubmit={this.previewModal} id="editMenu">
+        <form onSubmit={this.handleSubmit} id="editMenu">
           <div className="form-group row">
             <label htmlFor="title" className="col-sm-2 col-form-label">Menu Title:</label>
             <div className="col-sm-10">
-              <input type="text" name="menu['title']" id="title" className="form-control" value={menu.title} onChange={this.handleChange} />
+              <input type="text" name="title" id="title" className="form-control" value={menu.title} onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group row">
              <label htmlFor="menu['description']" className="col-sm-2 col-form-label align-top">Menu Description:</label>
             <div className="col-sm-10">
-              <textarea name="menu['description']" id="menu['description']" rows="6" cols="60" className="form-control" value={menu.description} onChange={this.handleChange}></textarea>
+              <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" value={menu.description} onChange={this.handleChange}></textarea>
             </div>
           </div>
           {this.subFormComponentType()}
@@ -85,6 +90,3 @@ class MenuEdit extends Component {
 }
 
 export default MenuEdit
-
-
-

@@ -1,6 +1,7 @@
 $color-background: #808080;
 $color-text: #fff;
 $color-secondary: #acacac;
+$color-accent: #750000;
 $logo-color: #0a0a0a;
 $card-default: rgb(70, 61, 52);
 $odd-table-row: rgb(180, 179, 179);
@@ -78,7 +79,7 @@ table {
 }
 .nav li a {
   font-size: 24px;
-  color: #750000;
+  color: $color-accent;
   font-weight: bold;
 }
 .nav li a:hover {
@@ -111,6 +112,9 @@ table {
 }
 #editMenu {
   margin-top: 250px;
+  .tapNumber {
+    color: $color-accent;
+  }
 }
 #editMenu label,
 #editMenu p {

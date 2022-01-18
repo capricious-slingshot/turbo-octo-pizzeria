@@ -11,13 +11,14 @@ class SubFormTableEdit extends Component{
 
     return (
       <>
+        <h3 className="text-center tapNumber">Tap {this.props.data["tapNumber"]}</h3>
         <div className="form-group row">
           <label htmlFor={`brewery${id}`} className="col-sm-1 col-form-label">Brewery</label>
-          <div className="col-sm-3">
+          <div className="col-sm-5">
             <input type="text" name='brewery' id={`brewery${id}`} className="form-control" value={this.props.data["brewery"]} onChange={handleTableChange} />
           </div>
           <label htmlFor={`beerName${id}`} className="col-sm-1 col-form-label">Beer Name</label>
-          <div className="col-sm-3">
+          <div className="col-sm-5">
             <input type="text" name='beerName' id={`beerName${id}`} className="form-control" value={this.props.data["beerName"]} onChange={handleTableChange} />
           </div>
         </div>
@@ -35,12 +36,10 @@ class SubFormTableEdit extends Component{
             <input type="text" name='ounces' id={`ounces${id}`} className="form-control" value={this.props.data["ounces"]} onChange={this.props.handleTableChange} />
           </div>
         </div>
+        <br /><br />
       </>
     )
   }
 }
 
 export default SubFormTableEdit
-
-
-

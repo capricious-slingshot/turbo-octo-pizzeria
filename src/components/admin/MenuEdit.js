@@ -78,7 +78,7 @@ class MenuEdit extends Component {
     // })
   // }
 
-  // handleTableChange = (e) => {
+  // handleTableRowChange = (e) => {
     // console.log(e)  //not currently even hitting method
 
     // this.setState(prevState => ({

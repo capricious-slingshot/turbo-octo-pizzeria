@@ -18,7 +18,7 @@ class MenuEdit extends Component {
   subFormComponentType() {
     //solves async issue
     if (this.state.menu && this.state.menu.subMenuArray) {
-      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange} /> : <SubFormSectionEdit key={menu.id} data={menu} handleTableChange={this.handleTableChange}/>)
+      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} handleTableRowChange={this.handleTableRowChange} /> : <SubFormSectionEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange}/>)
     }
     // catch: doesn't meet criteria
     return null
@@ -38,6 +38,12 @@ class MenuEdit extends Component {
 
   componentDidMount() {
     this.fetchData()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.slug !== prevProps.slug) {
+      this.fetchData()
+    }
   }
 
   handleChange = (e) => {
@@ -110,19 +116,19 @@ class MenuEdit extends Component {
           <div className="form-group row">
             <label htmlFor="title" className="col-sm-2 col-form-label">Menu Title:</label>
             <div className="col-sm-10">
-              <input type="text" name="title" id="title" className="form-control" value={menu.title} onChange={this.handleChange} />
+              <input type="text" name="title" id="title" className="form-control" defaultValue={menu.title} onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group row">
              <label htmlFor="menu['description']" className="col-sm-2 col-form-label align-top">Menu Description:</label>
             <div className="col-sm-10">
-              <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" value={menu.description} onChange={this.handleChange}></textarea>
+              <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" defaultValue={menu.description} onChange={this.handleChange}></textarea>
             </div>
           </div>
           {this.subFormComponentType()}
           <hr />
           <div className="d-flex align-items-end flex-column">
-            <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save" />
+            <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" defaultValue="Save" />
           </div>
         </form>
       </>

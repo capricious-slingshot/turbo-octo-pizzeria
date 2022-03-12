@@ -2,7 +2,7 @@ import { Component } from 'react'
 
 class SubFormTableEdit extends Component{
 //Questions:
-  // look at callbacks
+  // look at callbacks - how do I change state data
   // look at validations
 
   render() {

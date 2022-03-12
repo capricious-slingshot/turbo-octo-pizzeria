@@ -54,7 +54,12 @@ class MenuEdit extends Component {
   }
 
   handleSectionChange = (e) => {
-    console.log(e)  //not currently even hitting method
+    console.log(e)
+
+    //CRUD for menu - and fetch and pass state as single object
+    // state.menu
+
+
     // Attempt 1:
     //complete data structure: this.state.menu.subMenuArray[?child.props.key?]['items'][?index?][e.target.name] = e.target.value
 

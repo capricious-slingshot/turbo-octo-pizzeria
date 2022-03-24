@@ -94,11 +94,12 @@ class MenuEdit extends Component {
   }
 
   removeMenuItemHandler = () => {
-    console.log('I hate Javascript') // can't hit this
+    console.log('I hate Javascript')
   }
 
-  editMenuHandler = (e) => {
+  saveMenuHandler = (e) => {
     e.preventDefault()
+    console.log('Ready to save menu')
     //fetch(post menu item)
   }
 
@@ -110,7 +111,7 @@ class MenuEdit extends Component {
     const menu = this.state.menu
     return (
       <>
-        <form onSubmit={this.editMenuHandler} id="editMenu">
+        <form onSubmit={this.saveMenuHandler} id="editMenu">
           <hr />
             <h3 className="text-center itemNumber">{menu.title}</h3>
           <hr />

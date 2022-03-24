@@ -4,7 +4,7 @@
 
 // version 1: using plains json props and state:
 // (X) populate accordian from plain json - question about file structure here
-// building out admin page
+// (X) building out admin page
 // understanding basic crud at this level with state and props for admin page
   //  (X) read
   //  () update
@@ -21,6 +21,7 @@
 
 // whip up a blog post to articulate the differences
 
+// const log = (arg) => console.log(arg)
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-social/bootstrap-social.css'

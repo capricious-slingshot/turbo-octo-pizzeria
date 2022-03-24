@@ -20,7 +20,7 @@ class MenuEdit extends Component {
     if (this.state.menu && this.state.menu.subMenuArray) {
       return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} handleTableRowChange={this.handleTableRowChange} /> : <SubFormSectionEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange}/>)
     }
-    // catch: doesn't meet criteria
+    // catch: if it doesn't meet avove criteria
     return null
   }
 
@@ -56,7 +56,7 @@ class MenuEdit extends Component {
   handleSectionChange = (e) => {
     console.log(e)
 
-    //CRUD for menu - and fetch and pass state as single object
+    //CUD for menu - and fetch and pass state as single object
     // state.menu
 
 
@@ -104,9 +104,9 @@ class MenuEdit extends Component {
     // })
     }
 
-  handleSubmit = (e) => {
+  editMenuHandler = (e) => {
     e.preventDefault()
-    //fetch post
+    //fetch(post menu item)
   }
 
   render() {
@@ -117,17 +117,17 @@ class MenuEdit extends Component {
     const menu = this.state.menu
     return (
       <>
-        <form onSubmit={this.handleSubmit} id="editMenu">
+        <form onSubmit={this.editMenuHandler} id="editMenu">
           <div className="form-group row">
             <label htmlFor="title" className="col-sm-2 col-form-label">Menu Title:</label>
             <div className="col-sm-10">
-              <input type="text" name="title" id="title" className="form-control" defaultValue={menu.title} onChange={this.handleChange} />
+              <input type="text" name="title" id="title" className="form-control" placeholder="Title Required" defaultValue={menu.title} onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group row">
              <label htmlFor="menu['description']" className="col-sm-2 col-form-label align-top">Menu Description:</label>
             <div className="col-sm-10">
-              <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" defaultValue={menu.description} onChange={this.handleChange}></textarea>
+              <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" placeholder="Description Optional" defaultValue={menu.description} onChange={this.handleChange}></textarea>
             </div>
           </div>
           {this.subFormComponentType()}

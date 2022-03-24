@@ -133,7 +133,7 @@ class MenuEdit extends Component {
           {this.subFormComponentType()}
           <hr />
           <div className="d-flex align-items-end flex-column">
-            <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" defaultValue="Save" />
+            <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save Menu" />
           </div>
         </form>
       </>

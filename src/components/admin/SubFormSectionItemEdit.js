@@ -4,6 +4,8 @@ class SubFormSectionItem extends Component {
   render() {
     const id = this.props.data.id
     const handleChange = this.props.handleChange
+    const removeItem = this.props.removeItem
+
     return (
       <>
         <h3 className="itemNumber">Item {id + 1}</h3>
@@ -21,7 +23,7 @@ class SubFormSectionItem extends Component {
           </div>
         </div>
         <div className="d-flex align-items-end flex-column">
-          <input type="submit" className="btn-xs btn-danger p-2" value="Delete Item" />
+          <button onClick={removeItem} className="btn-xs btn-danger p-2">Delete Item</button>
         </div>
       </>
     )

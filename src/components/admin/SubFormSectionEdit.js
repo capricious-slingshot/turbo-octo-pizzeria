@@ -2,13 +2,12 @@ import { Component } from 'react'
 import SubFormSectionItem from './SubFormSectionItemEdit'
 
 class SubFormSectionEdit extends Component {
-  // do I need a callback function to set previous state? how deos this work?
-  // do I need a callback function to set handleChange? how deos this work?
 
   render() {
     const section = this.props.data
     const items = this.props.data.items
     const handleSectionChange = this.props.handleChange
+    const removeMenuItem = this.props.removeMenuItem
 
     return (
       <>
@@ -31,7 +30,7 @@ class SubFormSectionEdit extends Component {
             <input type="text" name={`section[${section.id}]'description']`} id={`section[${section.id}]'description']`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={handleSectionChange} />
           </div>
         </div>
-        {items.map(item => <SubFormSectionItem key={item.id} data={item} />)}
+        {items.map(item => <SubFormSectionItem key={item.id} data={item} removeItem={removeMenuItem}/>)}
       </>
     )
   }

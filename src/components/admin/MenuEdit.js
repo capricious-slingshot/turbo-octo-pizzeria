@@ -18,7 +18,7 @@ class MenuEdit extends Component {
   subFormComponentType() {
     //solves async issue
     if (this.state.menu && this.state.menu.subMenuArray) {
-      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} handleTableRowChange={this.handleTableRowChange} /> : <SubFormSectionEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange}/>)
+      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} handleTableRowChange={this.handleTableRowChange} /> : <SubFormSectionEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange} removeMenuItem={this.removeMenuItemHandler}/>)
     }
     // catch: if it doesn't meet avove criteria
     return null
@@ -90,7 +90,7 @@ class MenuEdit extends Component {
   }
 
   handleTableRowChange = (e) => {
-    console.log(e)  //not currently even hitting method
+    console.log(e)
 
     // this.setState(prevState => ({
     //   ...prevState, subMenuArray: {
@@ -102,7 +102,11 @@ class MenuEdit extends Component {
     //     }
     //   }
     // })
-    }
+  }
+
+  removeMenuItemHandler = () => {
+    console.log('I hate Javascript') // can't hit this
+  }
 
   editMenuHandler = (e) => {
     e.preventDefault()

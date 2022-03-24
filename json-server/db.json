@@ -479,13 +479,13 @@
             "id": 3,
             "name": "Savigon Blanc",
             "description": "Tohu, NZ | 2019",
-            "price": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ 30"
+            "price": " --- / 30"
           },
           {
             "id": 4,
             "name": "Chardonay",
             "description": "Ryan Patrick, WA | 2019",
-            "price": "    / 36"
+            "price": " --- / 36"
           }
         ]
       }

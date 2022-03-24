@@ -11,13 +11,13 @@ class MenuTableEdit extends Component{
 
     return (
       <>
-        <h3 className="text-center tapNumber">Tap {beer.tapNumber}</h3>
+        <h3 className="itemNumber">Tap {beer.tapNumber}</h3>
         <div className="form-group row">
           <label htmlFor={`brewery${beer.id}`} className="col-sm-1 col-form-label">Brewery</label>
           <div className="col-sm-5">
             <input type="text" name='brewery' id={`brewery${beer.id}`} className="form-control" defaultValue={beer.brewery} onChange={handleItemChange} />
           </div>
-          <label htmlFor={`beerName${beer.id}`} className="col-sm-1 col-form-label">Beer Name</label>
+          <label htmlFor={`beerName${beer.id}`} className="col-sm-1 col-form-label">Name</label>
           <div className="col-sm-5">
             <input type="text" name='beerName' id={`beerName${beer.id}`} className="form-control" defaultValue={beer.beerName} onChange={handleItemChange} />
           </div>

@@ -18,7 +18,7 @@ class MenuEdit extends Component {
   MenuComponentType() {
     //solves async issue
     if (this.state.menu && this.state.menu.subMenuArray) {
-      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} handleTableRowChange={this.handleTableRowChange} /> : <MenuSectionEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange} removeMenuItem={this.removeMenuItemHandler}/>)
+      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} /> : <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>)
     }
     // catch: if it doesn't meet avove criteria
     return null
@@ -53,7 +53,7 @@ class MenuEdit extends Component {
     this.setState( prevState => ({ menu }))
   }
 
-  handleSectionChange = (e) => {
+  menuSectionChangeHandler = (e) => {
     console.log(e)
 
     //CUD for menu - and fetch and pass state as single object
@@ -89,7 +89,7 @@ class MenuEdit extends Component {
     // })
   }
 
-  handleTableRowChange = (e) => {
+  menuTableChangeHandler = (e) => {
     console.log(e)
 
     // this.setState(prevState => ({

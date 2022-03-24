@@ -6,7 +6,7 @@ class MenuSectionEdit extends Component {
   render() {
     const section = this.props.data
     const items = this.props.data.items
-    const handleSectionChange = this.props.handleChange
+    const fieldChange = this.props.fieldChange
     const removeMenuItem = this.props.removeMenuItem
 
     return (
@@ -17,17 +17,17 @@ class MenuSectionEdit extends Component {
         <div className="form-group row">
           <label htmlFor={`section[${section.id}]'title']`} className="col-sm-2 col-form-label">Section Title:</label>
           <div className="col-sm-4">
-            <input type="text" name={`section[${section.id}]'title']`} id={`section[${section.id}]'title']`} className="form-control" placeholder="Optional" defaultValue={section.title} onChange={handleSectionChange} />
+            <input type="text" name={`section[${section.id}]'title']`} id={`section[${section.id}]'title']`} className="form-control" placeholder="Optional" defaultValue={section.title} onChange={fieldChange} />
           </div>
           <label htmlFor={`section[${section.id}]'colTitle']`} className="col-sm-2 col-form-label">Section SubTitle:</label>
           <div className="col-sm-4">
-            <input type="text" name={`section[${section.id}]'colTitle']`} id={`section[${section.id}]'colTitle']`} className="form-control" placeholder="Optional" defaultValue={section.colTitle} onChange={handleSectionChange} />
+            <input type="text" name={`section[${section.id}]'colTitle']`} id={`section[${section.id}]'colTitle']`} className="form-control" placeholder="Optional" defaultValue={section.colTitle} onChange={fieldChange} />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor={`section[${section.id}]'description']`} className="col-sm-2 col-form-label">Section Description:</label>
           <div className="col-sm-10">
-            <input type="text" name={`section[${section.id}]'description']`} id={`section[${section.id}]'description']`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={handleSectionChange} />
+            <input type="text" name={`section[${section.id}]'description']`} id={`section[${section.id}]'description']`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={fieldChange} />
           </div>
         </div>
         {items.map(item => <MenuSectionItem key={item.id} data={item} removeItem={removeMenuItem}/>)}

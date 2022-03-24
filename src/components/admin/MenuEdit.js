@@ -1,5 +1,5 @@
 // Questions:
-  // LifeCycle handleChange:
+  // LifeCycle menuChangeHandler:
     // LifeCycle issue: If two changes to the nested object got batched the last change would overwrite the first:
     // this.setState((prevState) => ({ nested: { ...prevState.nested, propertyToSet: newValue } } - not quite the right syntax
 
@@ -46,7 +46,7 @@ class MenuEdit extends Component {
     }
   }
 
-  handleChange = (e) => {
+  menuChangeHandler = (e) => {
     console.log(e)
     const menu = {...this.state.menu}
     menu[e.target.name] = e.target.value
@@ -91,17 +91,6 @@ class MenuEdit extends Component {
 
   menuTableChangeHandler = (e) => {
     console.log(e)
-
-    // this.setState(prevState => ({
-    //   ...prevState, subMenuArray: {
-    //     ...prevState.subMenuArray, [0]: {
-    //       ...prevState.subMenuArray[0],
-                // [e.target.name]: e.target.value
-    //         }
-    //       }
-    //     }
-    //   }
-    // })
   }
 
   removeMenuItemHandler = () => {
@@ -128,13 +117,13 @@ class MenuEdit extends Component {
           <div className="form-group row">
             <label htmlFor="title" className="col-sm-2 col-form-label">Menu Title:</label>
             <div className="col-sm-10">
-              <input type="text" name="title" id="title" className="form-control" placeholder="Title Required" defaultValue={menu.title} onChange={this.handleChange} />
+              <input type="text" name="title" id="title" className="form-control" placeholder="Title Required" defaultValue={menu.title} onChange={this.menuChangeHandler} />
             </div>
           </div>
           <div className="form-group row">
              <label htmlFor="menu['description']" className="col-sm-2 col-form-label align-top">Menu Description:</label>
             <div className="col-sm-10">
-              <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" placeholder="Description Optional" defaultValue={menu.description} onChange={this.handleChange}></textarea>
+              <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" placeholder="Description Optional" defaultValue={menu.description} onChange={this.menuChangeHandler}></textarea>
             </div>
           </div>
           {this.MenuComponentType()}

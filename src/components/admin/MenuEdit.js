@@ -4,8 +4,8 @@
     // this.setState((prevState) => ({ nested: { ...prevState.nested, propertyToSet: newValue } } - not quite the right syntax
 
 import { Component } from 'react'
-import SubFormTableEdit from './SubFormTableEdit'
-import SubFormSectionEdit from './SubFormSectionEdit'
+import MenuTableEdit from './MenuTableEdit'
+import MenuSectionEdit from './MenuSectionEdit'
 
 class MenuEdit extends Component {
 
@@ -15,10 +15,10 @@ class MenuEdit extends Component {
     menu: {}
   }
 
-  subFormComponentType() {
+  MenuComponentType() {
     //solves async issue
     if (this.state.menu && this.state.menu.subMenuArray) {
-      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <SubFormTableEdit key={menu.id} data={menu} handleTableRowChange={this.handleTableRowChange} /> : <SubFormSectionEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange} removeMenuItem={this.removeMenuItemHandler}/>)
+      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} handleTableRowChange={this.handleTableRowChange} /> : <MenuSectionEdit key={menu.id} data={menu} handleSectionChange={this.handleSectionChange} removeMenuItem={this.removeMenuItemHandler}/>)
     }
     // catch: if it doesn't meet avove criteria
     return null
@@ -137,7 +137,7 @@ class MenuEdit extends Component {
               <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" placeholder="Description Optional" defaultValue={menu.description} onChange={this.handleChange}></textarea>
             </div>
           </div>
-          {this.subFormComponentType()}
+          {this.MenuComponentType()}
           <hr />
           <div className="d-flex align-items-end flex-column">
             <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save Menu" />

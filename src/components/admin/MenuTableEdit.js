@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-class SubFormTableEdit extends Component{
+class MenuTableEdit extends Component{
 //Questions:
   // look at callbacks - how do I change state data
   // look at validations
@@ -42,4 +42,4 @@ class SubFormTableEdit extends Component{
   }
 }
 
-export default SubFormTableEdit
+export default MenuTableEdit

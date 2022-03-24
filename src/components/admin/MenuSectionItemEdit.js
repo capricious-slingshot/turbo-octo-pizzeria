@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-class SubFormSectionItem extends Component {
+class MenuSectionItem extends Component {
   render() {
     const id = this.props.data.id
     const handleChange = this.props.handleChange
@@ -30,4 +30,4 @@ class SubFormSectionItem extends Component {
   }
 }
 
-export default SubFormSectionItem
+export default MenuSectionItem

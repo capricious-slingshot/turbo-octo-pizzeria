@@ -1,7 +1,7 @@
 import { Component } from 'react'
-import SubFormSectionItem from './SubFormSectionItemEdit'
+import MenuSectionItem from './MenuSectionItemEdit'
 
-class SubFormSectionEdit extends Component {
+class MenuSectionEdit extends Component {
 
   render() {
     const section = this.props.data
@@ -30,10 +30,10 @@ class SubFormSectionEdit extends Component {
             <input type="text" name={`section[${section.id}]'description']`} id={`section[${section.id}]'description']`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={handleSectionChange} />
           </div>
         </div>
-        {items.map(item => <SubFormSectionItem key={item.id} data={item} removeItem={removeMenuItem}/>)}
+        {items.map(item => <MenuSectionItem key={item.id} data={item} removeItem={removeMenuItem}/>)}
       </>
     )
   }
 }
 
-export default SubFormSectionEdit
+export default MenuSectionEdit

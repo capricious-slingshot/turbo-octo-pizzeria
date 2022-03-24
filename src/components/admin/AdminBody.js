@@ -8,7 +8,7 @@ export default function AdminBody(props) {
   return (
     <>
       <div className="container fixed-top bg-dark text-center p-4">
-        <h1>Admin {capitalize(props.slug)} Edit</h1>
+        <h1>Edit {capitalize(props.slug)} </h1>
         <nav className="navbar flex-column flex-sm-row navbar-dark bg-dark">
           <div  id="navbarNav">
             <ul className="nav">

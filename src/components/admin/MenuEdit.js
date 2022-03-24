@@ -118,6 +118,9 @@ class MenuEdit extends Component {
     return (
       <>
         <form onSubmit={this.editMenuHandler} id="editMenu">
+          <hr />
+            <h3 className="text-center itemNumber">{menu.title}</h3>
+          <hr />
           <div className="form-group row">
             <label htmlFor="title" className="col-sm-2 col-form-label">Menu Title:</label>
             <div className="col-sm-10">

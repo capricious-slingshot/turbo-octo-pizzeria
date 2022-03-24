@@ -9,13 +9,11 @@ class SubFormSectionEdit extends Component {
     const section = this.props.data
     const items = this.props.data.items
     const handleSectionChange = this.props.handleChange
-    // const handleSectionChange = this.props.handleChange.bind(this)  //nope
-    // const handleSectionChange = (e) => this.props.handleChange  //nope
 
     return (
       <>
         <hr />
-        <h3 className="text-center">{section.title}</h3>
+        <h3 className="text-center">{section.title ? section.title : `Section ${section.id + 1}`}</h3>
         <hr />
         <div className="form-group row">
           <label htmlFor={`section[${section.id}]'title']`} className="col-sm-2 col-form-label">Section Title:</label>

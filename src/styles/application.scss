@@ -78,8 +78,9 @@ table {
   text-align: center;
 }
 .nav li a {
-  font-size: 24px;
+  font-size: 25px;
   color: $color-accent;
+  font-family: $header-font;
   font-weight: bold;
 }
 .nav li a:hover {

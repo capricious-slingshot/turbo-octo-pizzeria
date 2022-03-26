@@ -13,7 +13,7 @@ export default function CardMenuSection(props) {
         <div className="col">
           <h5>{ title }</h5>
         </div>
-        { secondCol}
+        {secondCol}
       </div>
       {items.map(item => <CardItem key={ item.id } name={item.name} description={item.description}  price={item.price}  />)}
     </>

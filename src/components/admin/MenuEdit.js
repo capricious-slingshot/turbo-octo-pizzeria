@@ -17,8 +17,8 @@ class MenuEdit extends Component {
 
   MenuComponentType() {
     //solves async issue
-    if (this.state.menu && this.state.menu.subMenuArray) {
-      return this.state.menu.subMenuArray.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} /> : <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>)
+    if (this.state.menu && this.state.menu.subMenus) {
+      return this.state.menu.subMenus.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} /> : <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>)
     }
     // catch: if it doesn't meet avove criteria
     return null
@@ -46,6 +46,8 @@ class MenuEdit extends Component {
     }
   }
 
+  //callback functions
+
   menuChangeHandler = (e) => {
     console.log(e)
     const menu = {...this.state.menu}
@@ -54,51 +56,38 @@ class MenuEdit extends Component {
   }
 
   menuSectionChangeHandler = (e) => {
-    console.log(e)
-
-    //CUD for menu - and fetch and pass state as single object
-    // state.menu
-
-
-    // Attempt 1:
-    //complete data structure: this.state.menu.subMenuArray[?child.props.key?]['items'][?index?][e.target.name] = e.target.value
-
-    // const menu = {...this.state.menu.subMenuArray}
-    // menu[?child.props.key?]['items'][?index?][e.target.name] = e.target.value
-    // this.setState( prevState => ({ menu }))
-
-    // how to work with nested components here - callback and complicated naming due to nesting:
-
-    // Attempt 2:
-    //need:
-    // [child.props.key] - how to get subMenuArray index (or id) - this is passed to child in props, can I pass back as an attribute?
-    // [itemIndex] - how to get item index (or id)
+    console.log(e.target)
+    console.log(e.target.value)
+    const menu = { ...this.state.menu.subMenus }
+    console.log(menu)
     
-    // final implementation should look something like this:
-    // this.setState(prevState => ({
-    //   ...prevState, subMenuArray: {
-    //     ...prevState.subMenuArray, [child.props.key]: {
-    //       ...prevState.subMenuArray[child.props.key], ['items']: {
-    //         ...prevState.subMenuArray[child.props.key]['items'], [itemIndex]: {
-    //           ...prevState.subMenuArray[child.props.key]['items'][itemIndex],
-    //              [e.target.name]: e.target.value
-    //         }
-    //       }
-    //     }
-    //   }
-    // })
-  }
+    // this.state.menu.subMenus['${section.id}']['title'] = e.target.value
 
-  menuTableChangeHandler = (e) => {
-    console.log(e)
+    //QUESTIONS:
+      // 1:
+      // <input type="text" name={`['${section.id}']['title']`} id={`['${section.id}']['title']`} className="form-control"... />
+      // - is placing the data in 'name' the right approach? That's how I did things in Rails
+      // - e.target is all I have to work with so I would assume so?
+
+      // 2:
+      // - should I just change the "name" field to be a stupid string and split it with a helper method? things go an additional level deep
+
+    console.log(menu`${e.target.name}`) //undefined
+
+
   }
 
   removeMenuItemHandler = () => {
     console.log('I hate Javascript')
   }
+  
+  menuTableChangeHandler = (e) => {
+    console.log(e)
+  }
 
   saveMenuHandler = (e) => {
     e.preventDefault()
+    //CUD for menu - and fetch and pass state as single object
     console.log('Ready to save menu')
     //fetch(post menu item)
   }

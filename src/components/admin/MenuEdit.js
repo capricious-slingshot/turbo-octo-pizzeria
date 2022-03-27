@@ -49,17 +49,33 @@ class MenuEdit extends Component {
   //callback functions
 
   menuChangeHandler = (e) => {
-    console.log(e)
+    console.log('menuChangeHandler');
     const menu = {...this.state.menu}
     menu[e.target.name] = e.target.value
     this.setState( prevState => ({ menu }))
   }
 
   menuSectionChangeHandler = (e) => {
-    console.log(e.target)
-    console.log(e.target.value)
-    const menu = { ...this.state.menu.subMenus }
-    console.log(menu)
+    console.log('menuSectionChangeHandler');
+    
+    console.log('target',e.target)
+    console.log('target-value', e.target.value)
+    const menu = this.state.menu;
+
+    menu.subMenus[e.target.id][e.target.name] = e.target.value;
+    
+    
+    this.setState({menu: menu})
+
+  
+    
+    
+    // menu.subMenus[e.target.id][e.target.name] = e.target.value
+    // console.log(menu.subMenus[e.target.id][e.target.name])
+    // console.log('target-value', e.target.value);
+    // console.log('target', e.target);
+    // console.log('sub-menus', menu);
+    
     
     // this.state.menu.subMenus['${section.id}']['title'] = e.target.value
 
@@ -72,7 +88,7 @@ class MenuEdit extends Component {
       // 2:
       // - should I just change the "name" field to be a stupid string and split it with a helper method? things go an additional level deep
 
-    console.log(menu`${e.target.name}`) //undefined
+    // console.log(menu`${e.target.name}`) //undefined
 
 
   }

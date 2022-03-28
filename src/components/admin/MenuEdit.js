@@ -18,7 +18,7 @@ class MenuEdit extends Component {
   MenuComponentType() {
     //solves async issue
     if (this.state.menu && this.state.menu.subMenus) {
-      return this.state.menu.subMenus.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} /> : <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>)
+      return this.state.menu.subMenus.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} /> : <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} itemFieldChange={this.menuSectionItemChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>)
     }
     // catch: if it doesn't meet avove criteria
     return null
@@ -46,51 +46,47 @@ class MenuEdit extends Component {
     }
   }
 
+  //where do helper functions live? seperate file?
+  parseInputData(name) {
+    return name.split('-')
+  }
+
   //callback functions
+  //QUESTIONS:
+      // 1:
+      // - is placing the data in 'name' the right approach? data-attribute field? That's how I did things in Rails
+      // - e.target is all I have to work with so I would assume so?
+
+      // 2:
+      // - should I just change the "name" field to be a string and split it with a helper method? things go an additional level deep - problems
+      // - where do helper methods live? are they private? external files? what's the file structure?
+  
+      // 3:
+      // - what is next step? feild input validation? posting to DB via fetch? //delete item? how would I pass the itemId to callback?
 
   menuChangeHandler = (e) => {
     console.log('menuChangeHandler');
     const menu = {...this.state.menu}
     menu[e.target.name] = e.target.value
-    this.setState( prevState => ({ menu }))
+    this.setState({ menu })
+    console.log(this.state.menu)
   }
 
   menuSectionChangeHandler = (e) => {
-    console.log('menuSectionChangeHandler');
-    
-    console.log('target',e.target)
-    console.log('target-value', e.target.value)
-    const menu = this.state.menu;
+    const menu = this.state.menu
+    const inputData = this.parseInputData(e.target.name)
+    menu.subMenus[inputData[0]][inputData[1]] = e.target.value
+    this.setState({ menu })
+  }
 
-    menu.subMenus[e.target.id][e.target.name] = e.target.value;
-    
-    
-    this.setState({menu: menu})
+  menuSectionItemChangeHandler = (e) => {
+    console.log(e.target.name)
+    const menu = this.state.menu
+    const inputData = this.parseInputData(e.target.name)
 
-  
-    
-    
-    // menu.subMenus[e.target.id][e.target.name] = e.target.value
-    // console.log(menu.subMenus[e.target.id][e.target.name])
-    // console.log('target-value', e.target.value);
-    // console.log('target', e.target);
-    // console.log('sub-menus', menu);
-    
-    
-    // this.state.menu.subMenus['${section.id}']['title'] = e.target.value
-
-    //QUESTIONS:
-      // 1:
-      // <input type="text" name={`['${section.id}']['title']`} id={`['${section.id}']['title']`} className="form-control"... />
-      // - is placing the data in 'name' the right approach? That's how I did things in Rails
-      // - e.target is all I have to work with so I would assume so?
-
-      // 2:
-      // - should I just change the "name" field to be a stupid string and split it with a helper method? things go an additional level deep
-
-    // console.log(menu`${e.target.name}`) //undefined
-
-
+    //will need to loop with item deletion
+    menu.subMenus[inputData[0]].items[inputData[1]][inputData[2]] = e.target.value
+    this.setState({ menu })
   }
 
   removeMenuItemHandler = () => {
@@ -121,9 +117,9 @@ class MenuEdit extends Component {
             <h3 className="text-center itemNumber">{menu.title}</h3>
           <hr />
           <div className="form-group row">
-            <label htmlFor="title" className="col-sm-2 col-form-label">Menu Title:</label>
+            <label htmlFor="menu['title']" className="col-sm-2 col-form-label">Menu Title:</label>
             <div className="col-sm-10">
-              <input type="text" name="title" id="title" className="form-control" placeholder="Title Required" defaultValue={menu.title} onChange={this.menuChangeHandler} />
+              <input type="text" name="title" id="menu['title']" className="form-control" placeholder="Title Required" defaultValue={menu.title} onChange={this.menuChangeHandler} />
             </div>
           </div>
           <div className="form-group row">

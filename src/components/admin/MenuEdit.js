@@ -15,15 +15,6 @@ class MenuEdit extends Component {
     menu: {}
   }
 
-  MenuComponentType() {
-    //solves async issue
-    if (this.state.menu && this.state.menu.subMenus) {
-      return this.state.menu.subMenus.map(menu => (this.props.slug === "microbrews") ? <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} /> : <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} itemFieldChange={this.menuSectionItemChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>)
-    }
-    // catch: if it doesn't meet avove criteria
-    return null
-  }
-
   async fetchData() {
     const slug = this.props.slug
     this.setState({ isFetching: true })
@@ -103,6 +94,16 @@ class MenuEdit extends Component {
     if (this.state.isFetching) {
       return <h1 className="text-center mt-5">Fetching Menu....</h1>
     }
+    let menuComponentType
+    if (this.state.menu && this.state.menu.subMenus) {
+      menuComponentType = this.state.menu.subMenus.map(menu => {
+        if (this.props.slug === "microbrews") {
+          return <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} />
+        } else {
+          return <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} itemFieldChange={this.menuSectionItemChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>
+        }
+      })
+    }
 
     const menu = this.state.menu
     return (
@@ -123,7 +124,7 @@ class MenuEdit extends Component {
               <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" placeholder="Description Optional" defaultValue={menu.description} onChange={this.menuChangeHandler}></textarea>
             </div>
           </div>
-          {this.MenuComponentType()}
+          { menuComponentType }
           <hr />
           <div className="d-flex align-items-end flex-column">
             <input type="submit" className="btn btn-primary p-2" data-toggle="modal" data-target="#previewModal" value="Save Menu" />

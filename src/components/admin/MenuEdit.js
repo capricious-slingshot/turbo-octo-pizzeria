@@ -60,26 +60,36 @@ class MenuEdit extends Component {
 
   menuSectionItemChangeHandler = (e) => {
     const inputData = this.parseInputData(e.target.name)
+    const sectionId = inputData[0]
+    const itemId = inputData[1]
+    const actionMethod = inputData[2]
     const menu = this.state.menu
 
-    // finds item by id and resets value
-    menu.subMenus[inputData[0]].items[inputData[1]][inputData[2]] = e.target.value
-
-    this.setState({ menu })
-  }
-
-  removeMenuItemHandler = (e) => {
-    const itemData = this.parseInputData(e.target.name)
-    const menu = this.state.menu
-    
     // finds item by id
-    const menuItem = menu.subMenus[itemData[0]].items.find(i => i.id === parseInt(itemData[1], 10))
-    // filters found item out of items
-    menu.subMenus[itemData[0]].items = menu.subMenus[itemData[0]].items.filter(item => item.id !== menuItem.id)
-    
+    let menuItem = menu.subMenus[sectionId].items.find(i => i.id === parseInt(itemId, 10))
+
+    if (actionMethod === 'delete' ) {
+      // filters found item out of items
+      menu.subMenus[inputData[0]].items = menu.subMenus[inputData[0]].items.filter(item => item.id !== menuItem.id)
+    } else {
+      // resets value
+      menuItem[actionMethod] = e.target.value
+    }
+
     this.setState({ menu })
   }
-  
+
+  // removeMenuItemHandler = (e) => {
+  //   const itemData = this.parseInputData(e.target.name)
+  //   const menu = this.state.menu
+    
+  //   // finds item by id
+  //   const menuItem = menu.subMenus[itemData[0]].items.find(i => i.id === parseInt(itemData[1], 10))
+
+    
+  //   this.setState({ menu })
+  // }
+
   menuTableChangeHandler = (e) => {
     console.log(e)
   }

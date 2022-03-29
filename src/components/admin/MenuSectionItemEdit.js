@@ -6,7 +6,6 @@ class MenuSectionItem extends Component {
     const itemIndex = this.props.index
     const sectionId = this.props.section
     const handleChange = this.props.itemFieldChange
-    const removeItem = this.props.removeItem
 
     return (
       <>
@@ -25,7 +24,7 @@ class MenuSectionItem extends Component {
           </div>
         </div>
         <div className="d-flex align-items-end flex-column">
-          <button onClick={removeItem} className="btn-xs btn-danger p-2" name={`${sectionId}-${itemId}-delete`} defaultValue={itemId}>Delete Item</button>
+          <button onClick={handleChange} className="btn-xs btn-danger p-2" name={`${sectionId}-${itemId}-delete`} defaultValue={itemId}>Delete Item</button>
         </div>
       </>
     )

@@ -32,7 +32,7 @@ class MenuSectionEdit extends Component {
             <input type="text" name={`${section.id}-description`} id={`${section.id}-description`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={fieldChange} />
           </div>
         </div>
-        {items.map((item, index) => <MenuSectionItem key={item.id} data={item} index={index} section={section.id} itemFieldChange={itemFieldChange} removeItem={removeMenuItem}/>)}
+        {items.map((item, index) => <MenuSectionItem key={item.id} data={item} index={index} section={section.id} itemFieldChange={itemFieldChange} />)}
       </>
     )
   }

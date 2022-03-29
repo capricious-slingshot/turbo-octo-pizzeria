@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import MenuSectionItem from './MenuSectionItemEdit'
 
-// functional component because no state, {section, }
+// functional component because no state, can use decomposition instead of defiing all of the variables
 class MenuSectionEdit extends Component {
 
   render() {
@@ -32,7 +32,7 @@ class MenuSectionEdit extends Component {
             <input type="text" name={`${section.id}-description`} id={`${section.id}-description`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={fieldChange} />
           </div>
         </div>
-        {items.map(item => <MenuSectionItem key={item.id} data={item} section={section.id} itemFieldChange={itemFieldChange} removeItem={removeMenuItem}/>)}
+        {items.map((item, index) => <MenuSectionItem key={item.id} data={item} index={index} section={section.id} itemFieldChange={itemFieldChange} removeItem={removeMenuItem}/>)}
       </>
     )
   }

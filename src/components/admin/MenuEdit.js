@@ -53,23 +53,13 @@ class MenuEdit extends Component {
 
   //callback functions
   //QUESTIONS:
-      // 1:
-      // - is placing the data in 'name' the right approach? data-attribute field? That's how I did things in Rails
-      // - e.target is all I have to work with so I would assume so?
-
-      // 2:
-      // - should I just change the "name" field to be a string and split it with a helper method? things go an additional level deep - problems
       // - where do helper methods live? are they private? external files? what's the file structure?
-  
-      // 3:
-      // - what is next step? feild input validation? posting to DB via fetch? //delete item? how would I pass the itemId to callback?
+      // - what is next step? feild input validation? posting to DB via fetch?
 
   menuChangeHandler = (e) => {
-    console.log('menuChangeHandler');
     const menu = {...this.state.menu}
     menu[e.target.name] = e.target.value
     this.setState({ menu })
-    console.log(this.state.menu)
   }
 
   menuSectionChangeHandler = (e) => {
@@ -80,17 +70,22 @@ class MenuEdit extends Component {
   }
 
   menuSectionItemChangeHandler = (e) => {
-    console.log(e.target.name)
     const menu = this.state.menu
     const inputData = this.parseInputData(e.target.name)
 
-    //will need to loop with item deletion
+    //will need to loop with item deletion FIND BY ID
     menu.subMenus[inputData[0]].items[inputData[1]][inputData[2]] = e.target.value
     this.setState({ menu })
   }
 
-  removeMenuItemHandler = () => {
-    console.log('I hate Javascript')
+  removeMenuItemHandler = (e) => {
+    const itemData = this.parseInputData(e.target.getAttribute("name"))
+    const menu = this.state.menu
+    const items = menu.subMenus[itemData[0]].items
+    const menuItem = menu.subMenus[itemData[0]].items[itemData[1]]
+    
+    menu.subMenus[itemData[0]].items = items.filter(item => item.id !== menuItem.id)
+    this.setState({ menu })
   }
   
   menuTableChangeHandler = (e) => {

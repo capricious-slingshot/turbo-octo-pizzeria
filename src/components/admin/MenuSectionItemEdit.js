@@ -3,14 +3,14 @@ import { Component } from 'react'
 class MenuSectionItem extends Component {
   render() {
     const itemId = this.props.data.id
+    const itemIndex = this.props.index
     const sectionId = this.props.section
-    // console.log(this.props)
     const handleChange = this.props.itemFieldChange
     const removeItem = this.props.removeItem
 
     return (
       <>
-        <h3 className="itemNumber">Item {itemId + 1}</h3>
+        <h3 className="itemNumber">Item {itemIndex + 1}</h3>
         <div className="form-group row">
           <div className="col-sm-6">
             <input type="text" name={`${sectionId}-${itemId}-name`} id={`${sectionId}-${itemId}-name`} className="form-control" placeholder="Item Name Required" defaultValue={this.props.data.name} onChange={handleChange} />
@@ -25,7 +25,7 @@ class MenuSectionItem extends Component {
           </div>
         </div>
         <div className="d-flex align-items-end flex-column">
-          <button onClick={removeItem} className="btn-xs btn-danger p-2">Delete Item</button>
+          <button onClick={removeItem} className="btn-xs btn-danger p-2" name={`${sectionId}-${itemId}-delete`} defaultValue={itemId}>Delete Item</button>
         </div>
       </>
     )

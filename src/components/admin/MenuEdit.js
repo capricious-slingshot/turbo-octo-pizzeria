@@ -44,16 +44,12 @@ class MenuEdit extends Component {
   menuChangeHandler = (e) => {
     const menu = this.state.menu
 
-    menu[e.target.name] = e.target.value
-
-    this.setState({ menu })
-  }
-
-  menuSectionChangeHandler = (e) => {
-    const menu = this.state.menu
-    const inputData = this.parseInputData(e.target.name)
-
-    menu.subMenus[inputData[0]][inputData[1]] = e.target.value
+    if (menu[e.target.name]) {
+      menu[e.target.name] = e.target.value
+    } else {
+      const inputData = this.parseInputData(e.target.name)
+      menu.subMenus[inputData[0]][inputData[1]] = e.target.value
+    }
 
     this.setState({ menu })
   }
@@ -77,18 +73,8 @@ class MenuEdit extends Component {
     }
 
     this.setState({ menu })
+    console.log(menu)
   }
-
-  // removeMenuItemHandler = (e) => {
-  //   const itemData = this.parseInputData(e.target.name)
-  //   const menu = this.state.menu
-    
-  //   // finds item by id
-  //   const menuItem = menu.subMenus[itemData[0]].items.find(i => i.id === parseInt(itemData[1], 10))
-
-    
-  //   this.setState({ menu })
-  // }
 
   menuTableChangeHandler = (e) => {
     console.log(e)
@@ -111,7 +97,7 @@ class MenuEdit extends Component {
         if (this.props.slug === "microbrews") {
           return <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} />
         } else {
-          return <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuSectionChangeHandler} itemFieldChange={this.menuSectionItemChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>
+          return <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuChangeHandler} itemFieldChange={this.menuSectionItemChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>
         }
       })
     }

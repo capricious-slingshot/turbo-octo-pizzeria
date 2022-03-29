@@ -1,7 +1,6 @@
 // Questions:
-  // LifeCycle menuChangeHandler:
-    // LifeCycle issue: If two changes to the nested object got batched the last change would overwrite the first:
-    // this.setState((prevState) => ({ nested: { ...prevState.nested, propertyToSet: newValue } } - not quite the right syntax
+  // - where do helper methods live? are they private? external files? what's the file structure?
+  // - what is next step? feild input validation? posting to DB via fetch?
 
 import { Component } from 'react'
 import MenuTableEdit from './MenuTableEdit'
@@ -37,45 +36,47 @@ class MenuEdit extends Component {
     }
   }
 
-  //where do helper functions live? seperate file?
   parseInputData(name) {
     return name.split('-')
   }
 
   //callback functions
-  //QUESTIONS:
-      // - where do helper methods live? are they private? external files? what's the file structure?
-      // - what is next step? feild input validation? posting to DB via fetch?
-
   menuChangeHandler = (e) => {
-    const menu = {...this.state.menu}
+    const menu = this.state.menu
+
     menu[e.target.name] = e.target.value
+
     this.setState({ menu })
   }
 
   menuSectionChangeHandler = (e) => {
     const menu = this.state.menu
     const inputData = this.parseInputData(e.target.name)
+
     menu.subMenus[inputData[0]][inputData[1]] = e.target.value
+
     this.setState({ menu })
   }
 
   menuSectionItemChangeHandler = (e) => {
-    const menu = this.state.menu
     const inputData = this.parseInputData(e.target.name)
+    const menu = this.state.menu
 
-    //will need to loop with item deletion FIND BY ID
+    // finds item by id and resets value
     menu.subMenus[inputData[0]].items[inputData[1]][inputData[2]] = e.target.value
+
     this.setState({ menu })
   }
 
   removeMenuItemHandler = (e) => {
-    const itemData = this.parseInputData(e.target.getAttribute("name"))
+    const itemData = this.parseInputData(e.target.name)
     const menu = this.state.menu
-    const items = menu.subMenus[itemData[0]].items
-    const menuItem = menu.subMenus[itemData[0]].items[itemData[1]]
     
-    menu.subMenus[itemData[0]].items = items.filter(item => item.id !== menuItem.id)
+    // finds item by id
+    const menuItem = menu.subMenus[itemData[0]].items.find(i => i.id === parseInt(itemData[1], 10))
+    // filters found item out of items
+    menu.subMenus[itemData[0]].items = menu.subMenus[itemData[0]].items.filter(item => item.id !== menuItem.id)
+    
     this.setState({ menu })
   }
   

@@ -7,9 +7,7 @@ class MenuSectionEdit extends Component {
   render() {
     const section = this.props.data
     const items = this.props.data.items
-    const fieldChange = this.props.fieldChange
-    const itemFieldChange = this.props.itemFieldChange
-    const removeMenuItem = this.props.removeMenuItem
+    const menuChange = this.props.menuChange
 
     return (
       <>
@@ -19,20 +17,20 @@ class MenuSectionEdit extends Component {
         <div className="form-group row">
           <label htmlFor={`${section.id}-title`} className="col-sm-2 col-form-label">Section Title:</label>
           <div className="col-sm-4">
-            <input type="text" name={`${section.id}-title`} id={`${section.id}-title`} className="form-control" placeholder="Optional" defaultValue={section.title} onChange={fieldChange} />
+            <input type="text" name={`${section.id}-title`} id={`${section.id}-title`} className="form-control" placeholder="Optional" defaultValue={section.title} onChange={menuChange} />
           </div>
           <label htmlFor={`${section.id}-colTitle`} className="col-sm-2 col-form-label">Section SubTitle:</label>
           <div className="col-sm-4">
-            <input type="text" name={`${section.id}-colTitle`} id={`${section.id}-colTitle`} className="form-control" placeholder="Optional" defaultValue={section.colTitle} onChange={fieldChange} />
+            <input type="text" name={`${section.id}-colTitle`} id={`${section.id}-colTitle`} className="form-control" placeholder="Optional" defaultValue={section.colTitle} onChange={menuChange} />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor={`${section.id}-description`} className="col-sm-2 col-form-label">Section Description:</label>
           <div className="col-sm-10">
-            <input type="text" name={`${section.id}-description`} id={`${section.id}-description`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={fieldChange} />
+            <input type="text" name={`${section.id}-description`} id={`${section.id}-description`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={menuChange} />
           </div>
         </div>
-        {items.map((item, index) => <MenuSectionItem key={item.id} data={item} index={index} section={section.id} itemFieldChange={itemFieldChange} />)}
+        {items.map((item, index) => <MenuSectionItem key={item.id} data={item} index={index} section={section.id} menuChange={menuChange} />)}
       </>
     )
   }

@@ -44,36 +44,40 @@ class MenuEdit extends Component {
   menuChangeHandler = (e) => {
     const menu = this.state.menu
 
+    // parent component field
     if (menu[e.target.name]) {
       menu[e.target.name] = e.target.value
     } else {
       const inputData = this.parseInputData(e.target.name)
-      menu.subMenus[inputData[0]][inputData[1]] = e.target.value
+      console.log('data', inputData)
+      const sectionId = inputData[0]
+      console.log('sectionId', sectionId)
+      
+      const itemId = parseInt(inputData[1], 10)
+      
+      if (itemId >= 0) {
+        // grandchild component (item)
+        const keyName = inputData[2]
+        
+        // finds item by id
+        let menuItem = menu.subMenus[sectionId].items.find(i => i.id === parseInt(itemId, 10))
+        
+        if (keyName === 'delete' ) {
+          // remove item
+          menu.subMenus[inputData[0]].items = menu.subMenus[inputData[0]].items.filter(item => item.id !== menuItem.id)
+        } else {
+          // resets value
+          menuItem[keyName] = e.target.value
+        }
+      } else {
+        //child component field (section)
+        const sectionKey = inputData[1]
+
+        menu.subMenus[sectionId][sectionKey] = e.target.value
+      }
     }
 
     this.setState({ menu })
-  }
-
-  menuSectionItemChangeHandler = (e) => {
-    const inputData = this.parseInputData(e.target.name)
-    const sectionId = inputData[0]
-    const itemId = inputData[1]
-    const actionMethod = inputData[2]
-    const menu = this.state.menu
-
-    // finds item by id
-    let menuItem = menu.subMenus[sectionId].items.find(i => i.id === parseInt(itemId, 10))
-
-    if (actionMethod === 'delete' ) {
-      // filters found item out of items
-      menu.subMenus[inputData[0]].items = menu.subMenus[inputData[0]].items.filter(item => item.id !== menuItem.id)
-    } else {
-      // resets value
-      menuItem[actionMethod] = e.target.value
-    }
-
-    this.setState({ menu })
-    console.log(menu)
   }
 
   menuTableChangeHandler = (e) => {
@@ -97,7 +101,7 @@ class MenuEdit extends Component {
         if (this.props.slug === "microbrews") {
           return <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} />
         } else {
-          return <MenuSectionEdit key={menu.id} data={menu} fieldChange={this.menuChangeHandler} itemFieldChange={this.menuSectionItemChangeHandler} removeMenuItem={this.removeMenuItemHandler}/>
+          return <MenuSectionEdit key={menu.id} data={menu} menuChange={this.menuChangeHandler} />
         }
       })
     }

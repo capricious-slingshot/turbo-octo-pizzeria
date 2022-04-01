@@ -13,7 +13,7 @@ class MenuSectionEdit extends Component {
     return (
       <>
         <hr />
-          <h3 className="text-center">{section.title ? section.title : `Section ${section.id + 1}`}</h3>
+          <h3 className="text-center">{section.title ? section.title : `New Section`}</h3>
         <hr />
         <div className="form-group row">
           <label htmlFor={`${section.id}-title`} className="col-sm-2 col-form-label">Section Title:</label>

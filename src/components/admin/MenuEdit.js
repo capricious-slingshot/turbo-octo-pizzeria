@@ -86,9 +86,20 @@ class MenuEdit extends Component {
     console.log(sectionId)
     
     console.log(menuSection[sectionId].items)
-    menuSection[sectionId].items.push({"id": null,"name": null,"description": null,"price": null})
+    const newId = menuSection[sectionId].items.length  //this will change when hooked up to db
+    menuSection[sectionId].items.push({"id": newId,"name": null,"description": null,"price": null})
     console.log(menuSection[sectionId].items)
     this.setState({ menuSection })
+  }
+
+  addMenuSection = (e) => {
+    const menu = this.state.menu
+    const newId = this.state.menu.subMenus.length  //this will change when hooked up to db
+    console.log(menu)
+    
+    menu.subMenus.push({ "id": newId, "title": null, "colTitle": null, "sectionDescription": null, "items": []})
+    console.log(menu)
+    this.setState({ menu })
   }
 
   menuTableChangeHandler = (e) => {
@@ -131,11 +142,18 @@ class MenuEdit extends Component {
             </div>
           </div>
           <div className="form-group row">
-             <label htmlFor="menu['description']" className="col-sm-2 col-form-label align-top">Menu Description:</label>
+            <label htmlFor="menu['description']" className="col-sm-2 col-form-label align-top">Menu Description:</label>
             <div className="col-sm-10">
               <textarea name="description" id="menu['description']" rows="6" cols="60" className="form-control" placeholder="Description Optional" defaultValue={menu.description} onChange={this.menuChangeHandler}></textarea>
             </div>
           </div>
+          <div className="form-group row">
+            <div className="d-flex align-items-end flex-column">
+              <button onClick={this.addMenuSection} className="btn-xs btn-info p-2">Add Menu Section</button>
+            </div>
+          </div>
+
+          
           { menuComponentType }
           <hr />
           <div className="d-flex align-items-end flex-column">

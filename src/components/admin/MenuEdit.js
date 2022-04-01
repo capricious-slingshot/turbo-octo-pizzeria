@@ -36,8 +36,8 @@ class MenuEdit extends Component {
     }
   }
 
-  parseInputData(name) {
-    return name.split('-')
+  parseInputData(data) {
+    return data.split('-')
   }
 
   //callback functions
@@ -80,6 +80,17 @@ class MenuEdit extends Component {
     this.setState({ menu })
   }
 
+  addMenuItem = (e) => {
+    const menuSection = this.state.menu.subMenus
+    const sectionId = parseInt(this.parseInputData(e.target.name)[0], 10)
+    console.log(sectionId)
+    
+    console.log(menuSection[sectionId].items)
+    menuSection[sectionId].items.push({"id": null,"name": null,"description": null,"price": null})
+    console.log(menuSection[sectionId].items)
+    this.setState({ menuSection })
+  }
+
   menuTableChangeHandler = (e) => {
     console.log(e)
   }
@@ -99,9 +110,9 @@ class MenuEdit extends Component {
     if (this.state.menu && this.state.menu.subMenus) {
       menuComponentType = this.state.menu.subMenus.map(menu => {
         if (this.props.slug === "microbrews") {
-          return <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} />
+          return <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} addMenuItem={this.addMenuItem} />
         } else {
-          return <MenuSectionEdit key={menu.id} data={menu} menuChange={this.menuChangeHandler} />
+          return <MenuSectionEdit key={menu.id} data={menu} menuChange={this.menuChangeHandler} addMenuItem={this.addMenuItem} />
         }
       })
     }

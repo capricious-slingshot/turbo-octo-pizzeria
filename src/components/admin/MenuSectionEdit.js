@@ -8,11 +8,12 @@ class MenuSectionEdit extends Component {
     const section = this.props.data
     const items = this.props.data.items
     const menuChange = this.props.menuChange
+    const addMenuItem = this.props.addMenuItem
 
     return (
       <>
         <hr />
-        <h3 className="text-center">{section.title ? section.title : `Section ${section.id + 1}`}</h3>
+          <h3 className="text-center">{section.title ? section.title : `Section ${section.id + 1}`}</h3>
         <hr />
         <div className="form-group row">
           <label htmlFor={`${section.id}-title`} className="col-sm-2 col-form-label">Section Title:</label>
@@ -29,6 +30,9 @@ class MenuSectionEdit extends Component {
           <div className="col-sm-10">
             <input type="text" name={`${section.id}-description`} id={`${section.id}-description`} className="form-control" placeholder="Optional" defaultValue={section.description} onChange={menuChange} />
           </div>
+        </div>
+        <div className="d-flex align-items-end flex-column">
+          <button onClick={addMenuItem} className="btn-xs btn-warning p-2" name={`${section.id}-add`}>Add Menu Item</button>
         </div>
         {items.map((item, index) => <MenuSectionItem key={item.id} data={item} index={index} section={section.id} menuChange={menuChange} />)}
       </>

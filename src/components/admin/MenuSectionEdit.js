@@ -20,7 +20,7 @@ class MenuSectionEdit extends Component {
       <>
         <div className={`${sectionPresent ? '' : 'd-none'}`} id="sectionWrapper">
           <hr />
-            <h3 className="text-center">{section.title ? section.title : `New Section`}</h3>
+            <h3 className="text-center">{section.title ? section.title : `Section Info`}</h3>
           <hr />
           <div className="form-group row">
             <label htmlFor={`${section.id}-title`} className="col-sm-2 col-form-label">Section Title:</label>
@@ -42,7 +42,7 @@ class MenuSectionEdit extends Component {
           <div className="row justify-content-end">
             <div className="col-sm-4 button-wrapper">
               <button onClick={this.showEmptySection} className={`btn-xs btn-success p-2 col-6 ${sectionPresent ? 'd-none' : ''}`} name={`${section.id}-add`} id="showSectionBttn">Show Section Info</button>
-              <button onClick={addMenuItem} className="btn-xs btn-warning p-2 col-6" name={`${section.id}-add`}>Add Menu Item</button>
+              <button onClick={addMenuItem} className="btn-xs btn-warning p-2 col-6 pull-right" name={`${section.id}-add`}>Add Menu Item</button>
             </div>
           </div>
         {items.map((item, index) => <MenuSectionItem key={item.id} data={item} index={index} section={section.id} menuChange={menuChange} />)}

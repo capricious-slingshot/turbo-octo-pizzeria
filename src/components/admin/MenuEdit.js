@@ -40,7 +40,6 @@ class MenuEdit extends Component {
     return data.split('-')
   }
 
-  //callback functions
   menuChangeHandler = (e) => {
     const menu = this.state.menu
 
@@ -83,23 +82,22 @@ class MenuEdit extends Component {
   addMenuItem = (e) => {
     const menuSection = this.state.menu.subMenus
     const sectionId = parseInt(this.parseInputData(e.target.name)[0], 10)
-    console.log(sectionId)
-    
-    console.log(menuSection[sectionId].items)
-    const newId = menuSection[sectionId].items.length  //this will change when hooked up to db
-    menuSection[sectionId].items.push({"id": newId,"name": null,"description": null,"price": null})
-    console.log(menuSection[sectionId].items)
+    const newItemId = menuSection[sectionId].items.length  //this will change when hooked up to db
+
+    menuSection[sectionId].items.push({"id": newItemId,"name": null,"description": null,"price": null})
     this.setState({ menuSection })
   }
 
   addMenuSection = (e) => {
     const menu = this.state.menu
     const newId = this.state.menu.subMenus.length  //this will change when hooked up to db
-    console.log(menu)
-    
+
     menu.subMenus.push({ "id": newId, "title": null, "colTitle": null, "sectionDescription": null, "items": []})
-    console.log(menu)
     this.setState({ menu })
+  }
+
+  showEmptySection = (e) => {
+
   }
 
   menuTableChangeHandler = (e) => {
@@ -107,6 +105,7 @@ class MenuEdit extends Component {
   }
 
   saveMenuHandler = (e) => {
+    //why does this fire when state is updated via non-submit button?
     e.preventDefault()
     //CUD for menu - and fetch and pass state as single object
     console.log('Ready to save menu')
@@ -123,7 +122,7 @@ class MenuEdit extends Component {
         if (this.props.slug === "microbrews") {
           return <MenuTableEdit key={menu.id} data={menu} tableRowChange={this.menuTableChangeHandler} addMenuItem={this.addMenuItem} />
         } else {
-          return <MenuSectionEdit key={menu.id} data={menu} menuChange={this.menuChangeHandler} addMenuItem={this.addMenuItem} />
+          return <MenuSectionEdit key={menu.id} data={menu} menuChange={this.menuChangeHandler} addMenuItem={this.addMenuItem}/>
         }
       })
     }
@@ -152,8 +151,6 @@ class MenuEdit extends Component {
               <button onClick={this.addMenuSection} className="btn-xs btn-info p-2">Add Menu Section</button>
             </div>
           </div>
-
-          
           { menuComponentType }
           <hr />
           <div className="d-flex align-items-end flex-column">
